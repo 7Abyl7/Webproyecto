@@ -1,1 +1,11 @@
-<p>product-card works!</p>
+<article>
+    <img [src]="product.URLImg" [alt]="product.nombre" />
+    <div>
+        <div>
+            <h3>{{product.nombre}}</h3>
+            <span>{{product.precio}}</span>
+        </div>
+        <p>{{product.autor}}</p>
+        <p>{{product.resolucion}}</p>
+    </div>
+</article>

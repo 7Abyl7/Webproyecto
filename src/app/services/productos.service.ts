@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/producto.model';
 @Injectable({providedIn:'root'})
 
-export class ProductsServices {
+export class ProductsService {
     private readonly products:Product[] = [{
         id: 1,
         precio: 200,

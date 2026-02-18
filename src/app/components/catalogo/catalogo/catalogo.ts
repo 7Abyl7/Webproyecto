@@ -9,7 +9,7 @@ import { ProductsService } from '../../../services/productos.service';
   templateUrl: './catalogo.html',
   styleUrl: './catalogo.css',
 })
-export class Catalogo {
+export class CatalogoComponent {
   products:Product[] = [];
   constructor(private productsService:ProductsService) {
     this.products = this.productsService.getAll();

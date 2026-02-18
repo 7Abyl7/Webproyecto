@@ -9,5 +9,5 @@ import { Product } from '../../../models/producto.model';
   styleUrl: './product-card.css',
 })
 export class ProductCardComponent {
-@Input({required:true})product!:Product;
+  @Input({required:true})product!:Product;
 }

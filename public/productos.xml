@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<productos>
+    <producto>
+        <id>1</id>
+        <precio>200</precio>
+        <nombre>Volcano1</nombre>
+        <resolucion>3200x2048</resolucion>
+        <autor>Adrian Suadero Quezadilla</autor>
+        <URLImg>assets/Fondos/Lava Volcan Pack1.png</URLImg>
+    </producto>
+    <producto>
+        <id>2</id>
+        <precio>200</precio>
+        <nombre>Volcano2</nombre>
+        <resolucion>3200x2048</resolucion>
+        <autor>Karla Regina Maiz Oregano</autor>
+        <URLImg>assets/Fondos/Lava Volcan Pack2.png</URLImg>
+    </producto>
+    <producto>
+        <id>3</id>
+        <precio>240</precio>
+        <nombre>CuevaHielo1</nombre>
+        <resolucion>3200x2048</resolucion>
+        <autor>Jatniel Guapo Diaz</autor>
+        <URLImg>assets/Fondos/Ice Cave Background1.png</URLImg>
+    </producto>
+    <producto>
+        <id>4</id>
+        <precio>240</precio>
+        <nombre>CuevaHielo2</nombre>
+        <resolucion>3200x2048</resolucion>
+        <autor>Adrian Suadero Quezadilla</autor>
+        <URLImg>assets/Fondos/Ice Cave Background2.png</URLImg>
+    </producto>
+    <producto>
+        <id>5</id>
+        <precio>180</precio>
+        <nombre>CuidadMorada1</nombre>
+        <resolucion>3200x2048</resolucion>
+        <autor>Karla Regina Maiz Oregano</autor>
+        <URLImg>assets/Fondos/Crystal Cave1.png</URLImg>
+    </producto>
+</productos>

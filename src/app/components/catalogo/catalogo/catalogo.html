@@ -2,7 +2,7 @@
     <h1>Catalogo</h1>
 </header>
 <section>
-    @for (p of products;track p.id) {
+    @for (p of products$ | async;track p.id) {
     <app-product-card [product]="p">
     </app-product-card>
     }

@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { Product } from '../../../models/producto.model';
 import { ProductCardComponent } from '../product-card/product-card';
 import { ProductsService } from '../../../services/productos.service';
 
 @Component({
   selector: 'app-catalogo',
-  imports: [ProductCardComponent, CommonModule],
+  standalone: true,
+  imports: [ProductCardComponent],
   templateUrl: './catalogo.html',
   styleUrl: './catalogo.css',
 })
-export class CatalogoComponent implements OnInit {
-  products$ = this.productsService.getAll$();
+export class CatalogoComponent {
+  products: Product[] = [];
 
-  constructor(private productsService: ProductsService) {}
-
-  ngOnInit(): void {
-    // Los productos se cargan automáticamente desde el Observable
+  constructor(private productsService: ProductsService) {
+    this.productsService.getAll().subscribe(data => {
+      this.products = data;
+    });
   }
 }

@@ -3,7 +3,7 @@
     <producto>
         <id>1</id>
         <precio>200</precio>
-        <nombre>Volcano1</nombre>
+        <nombre>Volcano 1</nombre>
         <resolucion>3200x2048</resolucion>
         <autor>Adrian Suadero Quezadilla</autor>
         <URLImg>assets/Fondos/Lava Volcan Pack1.png</URLImg>
@@ -11,7 +11,7 @@
     <producto>
         <id>2</id>
         <precio>200</precio>
-        <nombre>Volcano2</nombre>
+        <nombre>Volcano 2</nombre>
         <resolucion>3200x2048</resolucion>
         <autor>Karla Regina Maiz Oregano</autor>
         <URLImg>assets/Fondos/Lava Volcan Pack2.png</URLImg>
@@ -19,7 +19,7 @@
     <producto>
         <id>3</id>
         <precio>240</precio>
-        <nombre>CuevaHielo1</nombre>
+        <nombre>Cueva de Hielo 1</nombre>
         <resolucion>3200x2048</resolucion>
         <autor>Jatniel Guapo Diaz</autor>
         <URLImg>assets/Fondos/Ice Cave Background1.png</URLImg>
@@ -27,7 +27,7 @@
     <producto>
         <id>4</id>
         <precio>240</precio>
-        <nombre>CuevaHielo2</nombre>
+        <nombre>Cueva de Hielo 2</nombre>
         <resolucion>3200x2048</resolucion>
         <autor>Adrian Suadero Quezadilla</autor>
         <URLImg>assets/Fondos/Ice Cave Background2.png</URLImg>
@@ -35,7 +35,7 @@
     <producto>
         <id>5</id>
         <precio>180</precio>
-        <nombre>CuidadMorada1</nombre>
+        <nombre>Cueva de Cristales 1</nombre>
         <resolucion>3200x2048</resolucion>
         <autor>Karla Regina Maiz Oregano</autor>
         <URLImg>assets/Fondos/Crystal Cave1.png</URLImg>

@@ -1,45 +1,48 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {map, Observable} from 'rxjs';
 import { Product } from '../models/producto.model';
+
 @Injectable({providedIn:'root'})
 
 export class ProductsService {
-    private readonly products:Product[] = [{
-        id: 1,
-        precio: 200,
-        nombre: "Volcano1",
-        resolucion: "3200x2048",
-        autor: "Adrian Suadero Quezadilla",
-        URLImg: "udwhdkuhseiugfius"
-    }, {
-        id: 2,
-        precio: 200,
-        nombre: "Volcano2",
-        resolucion: "3200x2048",
-        autor: "Karla Regina Maiz Oregano",
-        URLImg: "udwhdkgsgsfsdgs"
-    }, {
-        id: 3,
-        precio: 240,
-        nombre: "CuevaHielo1",
-        resolucion: "3200x2048",
-        autor: "Jatniel Guapo Diaz",
-        URLImg: "udwhdkuhius"
-    }, {
-        id: 4,
-        precio: 240,
-        nombre: "CuevaHielo2",
-        resolucion: "3200x2048",
-        autor: "Adrian Suadero Quezadilla",
-        URLImg: "udwhdsdgdsgkuhseiugfius"
-    }, {
-        id: 5,
-        precio: 180,
-        nombre: "CuidadMorada1",
-        resolucion: "3200x2048",
-        autor: "Karla Regina Maiz Oregano",
-        URLImg: "udwhdkuhseijsiohugfius"
-    }];
-    getAll():Product[]{
-        return this.products;
+    constructor(private http: HttpClient) {}
+    getAll():Observable<Product[]> {
+    return this.http.get('/assets/productos.xml',{responseType:'text'}).pipe(
+    map((xmlText)=>this.parseProductsXml(xmlText))
+);
+}
+    private parseProductsXml(xmlText:string):Product[]{
+        const parser=new DOMParser();
+        const doc=parser.parseFromString(xmlText, 'application/xml');
+        if(doc.getElementsByTagName('parseerror').length>0){
+        return [];
+
+        }
+
+        const nodes=Array.from(doc.getElementsByTagName('product'));
+        return nodes.map((node)=>({
+            id:this.getNumber(node,'id'),
+            precio:this.getNumber(node,'precio'),
+            nombre:this.getText(node,'nombre'),
+            resolucion:this.getText(node,'resolucion'),
+            autor:this.getText(node,'autor'),
+            URLImg:this.getText(node,'URLImg'),
+        }));
     }
+
+     private getText(parent:Element,tag:string):string{
+        return parent.getElementsByTagName(tag)[0]?.textContent?.trim()??";"
+     }
+     private getNumber(parent: Element, tag:string):number
+     {
+        const value =this.getText(parent,tag);
+        const n=Number(value);
+        return Number.isFinite(n)?n:0;
+     }
+
+     private getBoolean(parent:Element, tag:string):boolean{
+        const value=this.getText(parent, tag).toLowerCase();
+        return value==='true'||value==='1'||value==='yes';
+     }
 }

@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Product } from '../../../models/producto.model';
 import { ProductCardComponent } from '../product-card/product-card';
 import { CarritoComponent } from '../carrito/carrito';

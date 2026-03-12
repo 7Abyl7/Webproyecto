@@ -26,14 +26,14 @@ export class CarritoService {
         const productos = this.productosSignal();
         let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<recibo>\n';
         for (const p of productos) {
-            xml += ' <producto>\n';
-            xml += ' <id>${p.id}</id>\n';
-            xml += ' <nombre>${this.escapeXml(p.nombre)}</nombre>\n';
-            xml += ' <precio>${p.precio}</precio>\n';
-            xml += ' </producto>\n';
+            xml += ` <producto>\n`;
+            xml += ` <id>${p.id}</id>\n`;
+            xml += ` <nombre>${this.escapeXml(p.nombre)}</nombre>\n`;
+            xml += ` <precio>${p.precio}</precio>\n`;
+            xml += ` </producto>\n`;
         }
-        xml += ' <total>${this.total()}</total>\n';
-        xml += ' </recibo>\n';
+        xml += ` <total>${this.total()}</total>\n`;
+        xml += ` </recibo>\n`;
         const blob = new Blob([xml], { type: 'application/xml'});
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -44,6 +44,6 @@ export class CarritoService {
     }
 
     private escapeXml(value: string): string {
-        return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll('""', '&apos;')
+        return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;')
     }
 }

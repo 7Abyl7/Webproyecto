@@ -1,6 +1,5 @@
 import { Injectable, signal } from '@angular/core'
 import { Product } from '../models/producto.model'
-
 @Injectable({ providedIn: 'root'})
 export class CarritoService {
     private productosSignal = signal<Product[]>([]);

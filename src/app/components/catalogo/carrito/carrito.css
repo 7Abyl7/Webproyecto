@@ -7,7 +7,8 @@
 
 .title {
     margin: 0 0 10px;
-    font-size: 18px;
+    font-size: 25px;
+    text-align: center;
 }
 
 .empty {
@@ -27,38 +28,68 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+    border-radius: 10px;
     gap: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.imagen {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 2px solid #ddd;
+}
+
+.informacion {
+    text-indent: 10px;
 }
 
 .line {
-    font-size: 14px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
 }
 
 .total {
-    margin-top: 12px;
-    font-weight: 700;
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
 }
 
 .actions {
     margin-top: 10px;
     display: flex;
-    gap: 10xp;
+    gap: 10px 15px;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn {
+    background: #b6b7ba;
     border: 0;
     border-radius: 10px;
     padding: 10px 12px;
     cursor: pointer;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
 }
 
 .btn.danger {
     background: #ef4444;
-    color: #ffff;
+    font-weight: bold;
+    font-size: 13px;
 }
 
 .btn.purple {
     background: #7c3aed;
-    color: #ffff;
+    font-weight: 400px;
 }

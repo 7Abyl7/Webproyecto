@@ -42,6 +42,19 @@ export class CarritoService {
         URL.revokeObjectURL(url);
     }
 
+    estaEnCarrito(id: number): boolean {
+        return this.productosSignal().some(p => p.id === id);
+    }
+
+    modificarCarrito(producto: Product) {
+        if (this.estaEnCarrito(producto.id)) {
+            this.quitar(producto.id);
+        } 
+        else {
+            this.agregar(producto);
+        }
+}
+
     private escapeXml(value: string): string {
         return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&apos;')
     }

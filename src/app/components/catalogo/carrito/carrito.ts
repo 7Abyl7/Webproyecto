@@ -30,4 +30,12 @@ export class CarritoComponent {
   exportarXML() {
     this.carritoService.exportarXML();
   }
+
+  estaEnCarrito(id: number) {
+    this.carritoService.estaEnCarrito(id);
+  }
+
+  modificarCarrito(producto: Product) {
+    this.carritoService.modificarCarrito(producto);
+  }
 }

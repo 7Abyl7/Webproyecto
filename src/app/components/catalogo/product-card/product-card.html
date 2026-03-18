@@ -1,12 +1,10 @@
 <article class="card">
+    <h3 class="title">{{product.nombre}}</h3>
     <img class="img" [src]="product.URLImg" [alt]="product.nombre" />
     <div class="body">
-        <div class="top">
-            <h3 class="title">{{product.nombre}}</h3>
-            <span class="price">${{product.precio}}</span>
-        </div>
+        <p class="price">Precio: ${{product.precio}}</p>
         <p class="author">Artista: {{product.autor}}</p>
         <p class="res">{{product.resolucion}}</p>
-        <button class="btn" (click)="onAdd()">Agregar al carrito</button>
+        <button [ngClass]="enCarrito ? 'btn quitar' : 'btn agregar'" (click)="onAdd()">{{ enCarrito ? 'Quitar del Carrito' : 'Agregar al Carrito'}}</button>
     </div>
 </article>

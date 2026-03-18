@@ -13,26 +13,19 @@
     margin: 0 auto;
 }
 
+.title {
+    text-align: center;
+    padding: 2px;
+    font-size: 20px;
+}
+
 .body {
     padding: 12px;
     display: grid;
-    gap: 8px;
-}
-
-.top {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    align-items: baseline;
-}
-
-.title {
-    margin: 0;
-    font-size: 18px;
 }
 
 .price {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
 }
 
@@ -43,7 +36,7 @@
 }
 
 .res {
-    margin: 0;
+    margin-top: 5px;
     font-size: 12px;
     color: #4d73b0;
 }
@@ -53,4 +46,31 @@
     border-radius: 10xp;
     padding: 10px 12px;
     cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn.agregar {
+    background-color: #22c55e;
+}
+
+.btn.agregar:hover {
+    background-color: #16a34a;
+    transform: scale(1.01);
+}
+
+.btn.agregar:active {
+    transform: scale(0.999);
+}
+
+.btn.quitar {
+    background-color: #ef4444;
+}
+
+.btn.quitar:hover {
+    background-color: #b91c1c;
+    transform: scale(1.01);
+}
+
+.btn.quitar:active {
+    transform: scale(0.999);
 }

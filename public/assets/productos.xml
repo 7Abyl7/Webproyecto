@@ -5,7 +5,7 @@
         <precio>200</precio>
         <nombre>Volcano 1</nombre>
         <resolucion>3200x2048</resolucion>
-        <autor>Adrian Suadero Quezadilla</autor>
+        <autor>Adrian Suarez Quezada</autor>
         <URLImg>assets/Fondos/Lava Volcan Pack1.png</URLImg>
     </producto>
     <producto>
@@ -13,7 +13,7 @@
         <precio>200</precio>
         <nombre>Volcano 2</nombre>
         <resolucion>3200x2048</resolucion>
-        <autor>Karla Regina Maiz Oregano</autor>
+        <autor>Karla Regina Macias Ortiz</autor>
         <URLImg>assets/Fondos/Lava Volcan Pack2.png</URLImg>
     </producto>
     <producto>
@@ -21,7 +21,7 @@
         <precio>240</precio>
         <nombre>Cueva de Hielo 1</nombre>
         <resolucion>3200x2048</resolucion>
-        <autor>Jatniel Guapo Diaz</autor>
+        <autor>Jatniel Herrera Diaz</autor>
         <URLImg>assets/Fondos/Ice Cave Background1.png</URLImg>
     </producto>
     <producto>
@@ -29,7 +29,7 @@
         <precio>240</precio>
         <nombre>Cueva de Hielo 2</nombre>
         <resolucion>3200x2048</resolucion>
-        <autor>Adrian Suadero Quezadilla</autor>
+        <autor>Adrian Suarez Quezada</autor>
         <URLImg>assets/Fondos/Ice Cave Background2.png</URLImg>
     </producto>
     <producto>
@@ -37,7 +37,39 @@
         <precio>180</precio>
         <nombre>Cueva de Cristales 1</nombre>
         <resolucion>3200x2048</resolucion>
-        <autor>Karla Regina Maiz Oregano</autor>
+        <autor>Karla Regina Macias Ortiz</autor>
         <URLImg>assets/Fondos/Crystal Cave1.png</URLImg>
+    </producto>
+    <producto>
+        <id>6</id>
+        <precio>300</precio>
+        <nombre>Cueva de Cristales 2</nombre>
+        <resolucion>3200x2048</resolucion>
+        <autor>Jatniel Herrera Diaz</autor>
+        <URLImg>assets/Fondos/Crystal Cave2.png</URLImg>
+    </producto>
+    <producto>
+        <id>7</id>
+        <precio>120</precio>
+        <nombre>Castillo 1</nombre>
+        <resolucion>3200x2048</resolucion>
+        <autor>Adrian Suarez Quezada</autor>
+        <URLImg>assets/Fondos/castle pack1.png</URLImg>
+    </producto>
+    <producto>
+        <id>8</id>
+        <precio>180</precio>
+        <nombre>Castillo 2</nombre>
+        <resolucion>3200x2048</resolucion>
+        <autor>Karla Regina Macias Ortiz</autor>
+        <URLImg>assets/Fondos/castle pack3.png</URLImg>
+    </producto>
+    <producto>
+        <id>9</id>
+        <precio>200</precio>
+        <nombre>Castillo 3</nombre>
+        <resolucion>3200x2048</resolucion>
+        <autor>Jatniel Herrera Diaz</autor>
+        <URLImg>assets/Fondos/castle pack2.png</URLImg>
     </producto>
 </productos>

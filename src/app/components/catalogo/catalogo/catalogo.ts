@@ -22,7 +22,16 @@ export class CatalogoComponent {
     });
   }
 
-  agregar(producto: Product) {
-    this.carritoService.agregar(producto);
+  estaEnCarrito(id: number): boolean {
+    return this.carritoService.estaEnCarrito(id);
+  }
+
+  modificarCarrito(producto: Product) { 
+    if (this.carritoService.estaEnCarrito(producto.id)) {
+      this.carritoService.quitar(producto.id);
+    } 
+    else {
+      this.carritoService.agregar(producto);
+    }
   }
 }

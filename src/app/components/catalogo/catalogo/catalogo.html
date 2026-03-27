@@ -1,11 +1,11 @@
 <header class="header">
     <h1>Catálogo</h1>
 </header>
-@if (products().length === 0) {
-<p>Cargando productos (o revisa la ruta del XML).</p>
+@if (products.length === 0) {
+<p>Cargando productos (o revisa la base de datos).</p>
 } @else {
 <section class="grid">
-    @for (p of products(); track p.id) {
+    @for (p of products; track p.id) {
     <app-product-card [product]="p" [enCarrito]="estaEnCarrito(p.id)" (add)="modificarCarrito($event)"></app-product-card>
     }
 </section>

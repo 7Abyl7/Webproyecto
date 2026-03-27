@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../models/producto.model';
 import { ProductCardComponent } from '../product-card/product-card';
 import { CarritoComponent } from '../carrito/carrito';
@@ -12,13 +12,20 @@ import { ProductsService } from '../../../services/productos.service';
   templateUrl: './catalogo.html',
   styleUrl: './catalogo.css',
 })
-export class CatalogoComponent {
-  products = signal<Product[]>([]);
+export class CatalogoComponent implements OnInit {
+  products: Product[] = [];
 
-  constructor(private productsService: ProductsService, private carritoService: CarritoService) {
-    this.productsService.getAll().subscribe({
-      next: (data) => this.products.set(data),
-      error: (err) => console.error('Error cargando XML:', err),
+  constructor(private productsService: ProductsService, private carritoService: CarritoService) {}
+
+  ngOnInit(): void {
+    this.productsService.getaProductos().subscribe({
+      next: (data) => {
+        this.products = data;
+        console.log('Productos recibidos: ', data);
+      },
+      error: (err) => {
+        console.error('Error al obtener productos: ', err);
+      }
     });
   }
 

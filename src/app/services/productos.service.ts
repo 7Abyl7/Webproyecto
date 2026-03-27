@@ -5,10 +5,11 @@ import { Product } from '../models/producto.model';
 
 @Injectable({ providedIn: 'root' })
 export class ProductsService {
-    
+    private apiUrl = 'http://localhost:3000/api/productos';
+
     constructor(private http: HttpClient) {}
-    getAll():Observable<Product[]> {
-        return this.http.get('/assets/productos.xml',{responseType:'text'}).pipe(map((xmlText)=>this.parseProductsXml(xmlText)));
+    getaProductos():Observable<Product[]> {
+        return this.http.get<Product[]>(this.apiUrl);
     }
 
     private parseProductsXml(xmlText:string):Product[]{

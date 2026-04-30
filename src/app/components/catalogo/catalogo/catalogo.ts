@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Product } from '../../../models/producto.model';
 import { ProductCardComponent } from '../product-card/product-card';
 import { CarritoComponent } from '../carrito/carrito';
@@ -15,13 +15,14 @@ import { ProductsService } from '../../../services/productos.service';
 export class CatalogoComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productsService: ProductsService, private carritoService: CarritoService) {}
+  constructor(private productsService: ProductsService, private carritoService: CarritoService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.productsService.getaProductos().subscribe({
       next: (data) => {
         this.products = data;
         console.log('Productos recibidos: ', data);
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('Error al obtener productos: ', err);

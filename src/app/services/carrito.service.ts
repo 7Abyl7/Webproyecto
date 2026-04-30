@@ -1,6 +1,8 @@
 import { Injectable, signal } from '@angular/core'
 import { Product } from '../models/producto.model'
+
 @Injectable({ providedIn: 'root'})
+
 export class CarritoService {
     private productosSignal = signal<Product[]>([]);
     productos = this.productosSignal.asReadonly();
@@ -18,7 +20,7 @@ export class CarritoService {
     }
 
     total(): number {
-        return this.productosSignal().reduce((acc, p) => acc + p.precio, 0);
+        return this.productosSignal().reduce((acc, p) => acc + (Number(p.precio) || 0), 0);
     }
 
     exportarXML() {

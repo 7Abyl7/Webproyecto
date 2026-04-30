@@ -12,24 +12,6 @@ export class ProductsService {
         return this.http.get<Product[]>(this.apiUrl);
     }
 
-    private parseProductsXml(xmlText:string):Product[]{
-        const parser=new DOMParser();
-        const doc=parser.parseFromString(xmlText, 'application/xml');
-        if(doc.getElementsByTagName('parseerror').length > 0) {
-            return [];
-        }
-
-        const nodes = Array.from(doc.getElementsByTagName('producto'));
-        return nodes.map((node) => ({
-            id:this.getNumber(node,'id'),
-            precio:this.getNumber(node,'precio'),
-            nombre:this.getText(node,'nombre'),
-            resolucion:this.getText(node,'resolucion'),
-            autor:this.getText(node,'autor'),
-            URLImg:this.getText(node,'URLImg'),
-        }));
-    }
-
      private getText(parent:Element,tag:string):string{
         return parent.getElementsByTagName(tag)[0]?.textContent?.trim()??'';
      }

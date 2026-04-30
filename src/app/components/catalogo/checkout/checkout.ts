@@ -11,7 +11,8 @@ declare const paypal: any;
   selector: 'app-checkout',
   standalone: true,
   imports: [CurrencyPipe, RouterLink],
-  templateUrl: './checkout.html'
+  templateUrl: './checkout.html',
+  styleUrl: './checkout.css'
 })
 export class CheckoutComponent implements AfterViewInit, OnInit {
   @ViewChild('paypalButtonContainer')
@@ -20,12 +21,12 @@ export class CheckoutComponent implements AfterViewInit, OnInit {
   private carritoService = inject(CarritoService);
   private paypalService = inject(PaypalService);
 
+  mostrarModal = false;
+  mensajeModal = '';
   carrito = this.carritoService.productos;
   total = () => this.carritoService.total();
 
   constructor(private cdr: ChangeDetectorRef){}
-
-  mensaje = '';
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -44,7 +45,7 @@ export class CheckoutComponent implements AfterViewInit, OnInit {
       return;
     }
     if (typeof paypal === 'undefined') {
-      this.mensaje = 'No se cargó el SDK de PayPal.';
+      this.ponerModal('No se cargó el SDK de PayPal.');
       return;
     }
     if (!this.paypalButtonContainer) {
@@ -64,7 +65,7 @@ export class CheckoutComponent implements AfterViewInit, OnInit {
           return response.id;
         } catch (error) {
           console.error('Error al crear la orden:', error);
-          this.mensaje = 'No se pudo crear la orden.';
+          this.ponerModal('No se pudo crear la orden.');
           throw error;
         }
       },
@@ -72,26 +73,36 @@ export class CheckoutComponent implements AfterViewInit, OnInit {
       onApprove: async (data: any) => {
         try {
           const capture = await firstValueFrom(
-            this.paypalService.capturarOrden(data.orderID)
+            this.paypalService.capturarOrden({orderId: data.orderID, items: this.carrito(), total: this.total()})
           );
           console.log('Pago capturado:', capture);
-          this.mensaje = 'Pago realizado correctamente.';
+          this.ponerModal('Pago realizado correctamente.');
+          this.carritoService.exportarXML();
           this.carritoService.vaciar();
           this.paypalButtonContainer.nativeElement.innerHTML = '';
         } catch (error) {
           console.error('Error al capturar el pago:', error);
-          this.mensaje = 'Ocurrio un error al capturar el pago.';
+          this.ponerModal('Ocurrio un error al capturar el pago.');
         }
       },
 
       onCancel: () => {
-        this.mensaje = 'El usuario cancelo el pago.';
+        this.ponerModal('El usuario cancelo el pago.');
       },
 
       onError: (error: any) => {
         console.error('Error PayPal:', error);
-        this.mensaje = 'Error en el proceso de PayPal.';
+        this.ponerModal('Error en el proceso de PayPal.');
       }
     }).render(this.paypalButtonContainer.nativeElement);
+  }
+
+  ponerModal(mensaje: string) {
+    this.mensajeModal = mensaje;
+    this.mostrarModal = true;
+  }
+
+  cerrarModal() {
+    this.mostrarModal = false;
   }
 }

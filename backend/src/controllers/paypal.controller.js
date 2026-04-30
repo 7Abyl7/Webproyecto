@@ -1,4 +1,5 @@
 const { createPaypalOrder, capturePaypalOrder } = require('../services/paypal.services');
+const db = require('../config/db');
 
 async function createOrder(req, res) {
     try {
@@ -29,13 +30,24 @@ async function createOrder(req, res) {
 
 async function captureOrder(req, res) {
     try {
-        const { orderId } = req.body;
+        const { orderId, items, total } = req.body;
         if (!orderId) {
             return res.status(400).json({
                 error: 'La ID de la orden es obligatoria'
             });
         }
         const captureData = await capturePaypalOrder(orderId);
+        db.query(`insert into pedidos (order_id, id_cliente, productos_comprados, total) values (?, ?, ?, ?)`, [orderId, 1, JSON.stringify(items), total], (err, result) => {
+            if (err) {
+                console.error("Error guardando pedido: ", err);
+                return res.status(500).json({ error: "Error guardando pedido" });
+            }
+            return res.status(200).json({
+                mensaje: "Pedido guardado correctamente",
+                captureData,
+                pedidoId: result.insertId
+            });
+        });
         res.status(200).json(captureData);
     } catch (error) {
         console.error('Error al capturar la orden: ', error.message);

@@ -12,6 +12,13 @@
     <hr>
     <p><strong>Total: {{ total() | currency:'MXN' }}</strong></p>
     <div #paypalButtonContainer></div>
-    <p>{{ mensaje }}</p>
+</div>
+} @if (mostrarModal) {
+<div class="modal-fondo">
+    <div class="modal-caja">
+        <h3>Mensaje</h3>
+        <p>{{ mensajeModal }}</p>
+        <button class="modal-btn" (click)="cerrarModal()">Aceptar</button>
+    </div>
 </div>
 }

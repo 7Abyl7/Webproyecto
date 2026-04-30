@@ -21,6 +21,7 @@ async function getAccessToken() {
 }
 
 async function createPaypalOrder(orderData) {
+    console.log("orderData.items: ", orderData.items);
     const accessToken = await getAccessToken();
     const body = {
         intent: 'CAPTURE',
@@ -36,7 +37,7 @@ async function createPaypalOrder(orderData) {
                 }
             },
             items: orderData.items.map(item => ({
-                name: item_nombre,
+                name: item.nombre,
                 unit_amount: {
                     currency_code: 'MXN',
                     value: Number(item.precio).toFixed(2)

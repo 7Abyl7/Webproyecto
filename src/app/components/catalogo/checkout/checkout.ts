@@ -1,4 +1,4 @@
-import {  AfterViewInit,  Component,  ElementRef,  ViewChild,  inject} from '@angular/core';
+import { AfterViewInit,  Component,  ElementRef,  ViewChild,  inject, ChangeDetectorRef, OnInit } from '@angular/core';
 import { CarritoService } from '../../../services/carrito.service';
 import { PaypalService } from '../../../services/paypal.service';
 import { CurrencyPipe } from '@angular/common';
@@ -13,7 +13,7 @@ declare const paypal: any;
   imports: [CurrencyPipe, RouterLink],
   templateUrl: './checkout.html'
 })
-export class CheckoutComponent implements AfterViewInit {
+export class CheckoutComponent implements AfterViewInit, OnInit {
   @ViewChild('paypalButtonContainer')
   paypalButtonContainer!: ElementRef<HTMLDivElement>;
 
@@ -21,12 +21,22 @@ export class CheckoutComponent implements AfterViewInit {
   private paypalService = inject(PaypalService);
 
   carrito = this.carritoService.productos;
-  total = this.carritoService.total;
+  total = () => this.carritoService.total();
+
+  constructor(private cdr: ChangeDetectorRef){}
 
   mensaje = '';
 
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.cdr.detectChanges();
+    }, 0);
+  }
+
   ngAfterViewInit(): void {
-    this.renderPaypalButton();
+    setTimeout(() => {
+      this.renderPaypalButton();
+    }, 0);
   }
 
   private renderPaypalButton(): void {

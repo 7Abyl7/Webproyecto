@@ -11,10 +11,10 @@ export class PaypalService {
     private apiUrl = `${environment.apiUrl}/paypal`;
 
     crearOrden (payload: { items: any[]; total: number}) {
-        return this.http.post<{id: String; status: String}>(`${this.apiUrl}/create-order`, payload);
+        return this.http.post<{id: String; status: String}>(`${this.apiUrl}/createOrder`, payload);
     }
 
     capturarOrden(orderId: string) {
-        return this.http.post<any>(`${this.apiUrl}/capture-order`, {orderId})
+        return this.http.post<any>(`${this.apiUrl}/captureOrder`, {orderId})
     }
 }

@@ -1,38 +1,24 @@
-.card {
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
+.tarjeta {
+    border: 1px solid #999;
+    border-radius: 10px;
     overflow: hidden;
     background: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.nombre {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .img {
-    width: 70%;
+    width: 80%;
     height: auto;
+    border: 3px solid black;
     object-fit: fill;
     display: block;
     margin: 0 auto;
-}
-
-.title {
-    text-align: center;
-    padding: 2px;
-    font-size: 20px;
-}
-
-.body {
-    padding: 12px;
-    display: grid;
-}
-
-.price {
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.author {
-    margin: 0;
-    font-size: 16px;
-    color: #000000;
 }
 
 .res {
@@ -41,10 +27,33 @@
     color: #4d73b0;
 }
 
+.informacion {
+    padding: 0 28px;
+    display: flex;
+    flex-direction: column;
+}
+
+.linea {
+    display: flex;
+    justify-content: space-between;
+}
+
+.precio {
+    text-align: left;
+    font-weight: bold;
+}
+
+.artista {
+    text-align: right;
+}
+
 .btn {
-    border: 0;
-    border-radius: 10xp;
-    padding: 10px 12px;
+    font-size: 14px;
+    width: 225px;
+    margin: 15px auto;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 10px;
     cursor: pointer;
     transition: all 0.2s ease;
 }

@@ -1,24 +1,27 @@
-<h2>Checkout</h2>
-@if (carrito().length === 0) {
-<p>Tu carrito esta vacío.</p>
-<a routerLink="/">Ir al catálogo</a> } @else {
-<div style="border:1px solid #ccc; border-radius:12px; padding:16px;">
-    <h3>Resumen del pedido</h3>
-    @for (producto of carrito(); track producto.id) {
-    <p>
-        {{ producto.nombre }} - {{ producto.precio | currency:'MXN' }}
-    </p>
-    }
-    <hr>
-    <p><strong>Total: {{ total() | currency:'MXN' }}</strong></p>
-    <div #paypalButtonContainer></div>
-</div>
-} @if (mostrarModal) {
-<div class="modal-fondo">
-    <div class="modal-caja">
-        <h3>Mensaje</h3>
-        <p>{{ mensajeModal }}</p>
-        <button class="modal-btn" (click)="cerrarModal()">Aceptar</button>
+<div class="contenedor-checkout">
+    <h2 class="titulo-checkout">Verificación</h2>
+    @if (carrito().length === 0) {
+    <p>Tu carrito está vacío.</p>
+    <a routerLink="/">Ir al catálogo</a> } @else {
+    <div class="caja-checkout">
+        <h3 class="subtitulo-checkout">Resumen de pedido</h3>
+        <hr> @for (producto of carrito(); track producto.id) {
+        <div class="producto-checkout">
+            <span>{{ producto.nombre }}</span>
+            <span>MX $ {{ producto.precio }}</span>
+        </div>
+        }
+        <hr>
+        <p class="total-checkout">Total: {{ total() | currency:'MXN' }}</p>
+        <div #paypalButtonContainer></div>
     </div>
+    } @if (mostrarModal) {
+    <div class="modal-fondo">
+        <div class="modal-caja">
+            <h3>Mensaje</h3>
+            <p>{{ mensajeModal }}</p>
+            <button class="modal-btn" (click)="cerrarModal()">Aceptar</button>
+        </div>
+    </div>
+    }
 </div>
-}

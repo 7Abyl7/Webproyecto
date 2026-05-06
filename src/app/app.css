@@ -1,19 +1,22 @@
 .barra {
-    margin: 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to right, #ff6b6b, #6bcf7f);
     display: flex;
-    padding: 0px 16px;
+    align-items: center;
     justify-content: space-between;
-    background: #a21010;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 0 18px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 .titulo {
-    font-size: 18px;
-    font-weight: 600;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    font-size: 25px;
+    color: black;
 }
 
 .derecha {
@@ -23,7 +26,7 @@
 }
 
 .btn {
-    font-size: 14px;
+    font-size: 20px;
     border: none;
     background: none;
     cursor: pointer;

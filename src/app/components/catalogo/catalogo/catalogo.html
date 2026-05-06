@@ -1,12 +1,16 @@
-<header class="header">
-    <h1>Catálogo</h1>
-</header>
-@if (products.length === 0) {
-<p>Cargando productos (o revisa la base de datos).</p>
-} @else {
-<section class="grid">
-    @for (p of products; track p.id) {
-    <app-product-card [product]="p" [enCarrito]="estaEnCarrito(p.id)" (add)="modificarCarrito($event)"></app-product-card>
-    }
-</section>
-}
+<div class="contenedor-inicio">
+    <div class="banner-principal">
+        <h1 class="titulo-banner">Arte digital en Pixeles</h1>
+        <div class="barra-busqueda">
+            <input type="text" placeholder="Buscar" class="input-busqueda">
+            <button class="boton-busqueda">🔍</button>
+        </div>
+    </div>
+    <div class="contenedor-productos">
+        @if (products.length === 0) {
+        <p>Cargando productos (o revisa la base de datos).</p>
+        } @else { @for (p of products; track p.id) {
+        <app-product-card [product]="p" [enCarrito]="estaEnCarrito(p.id)" (add)="modificarCarrito($event)"></app-product-card>
+        } }
+    </div>
+</div>

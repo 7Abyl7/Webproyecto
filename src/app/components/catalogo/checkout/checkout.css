@@ -1,3 +1,44 @@
+.contenedor-checkout {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+}
+
+.titulo-checkout {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.caja-checkout {
+    border-top: 2px solid gray;
+    padding-top: 15px;
+}
+
+.subtitulo-checkout {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.producto-checkout {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+}
+
+.total-checkout {
+    text-align: right;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .modal-fondo {
     position: fixed;
     top: 0;

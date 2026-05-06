@@ -1,25 +1,26 @@
-<section class="cart">
-    <h2 class="title">Carrito</h2>
+<div class="contenedor-carrito">
+    <h2 class="titulo-carrito">Carrito de compras</h2>
     @if (carrito().length === 0) {
-    <p class="empty">Tu carrito esta vacio.</p>
-    } @else {
+    <div class="vacio">
+        <p>Tu carrito está vacío.</p>
+        <a routerLink="/">Ir al catálogo</a>
+    </div> } @else {
     <ul class="list">
         @for (producto of carrito(); track producto.id) {
         <li class="item">
             <span class="line">
                 <img [src]="producto.URLImg" alt="{{ producto.nombre }}" class="imagen">
-                <p class="informacion">{{ producto.nombre }} - {{ producto.precio | currency:'MXN' }}</p>
+                <p class="nombre">{{ producto.nombre }}</p>
+                <p class="precio">{{ producto.precio | currency:'MXN' }}</p>
             </span>
             <button class="btn danger" (click)="quitar(producto.id)">Quitar</button>
         </li>
         }
     </ul>
-    <div class="total">
-        Total: {{ total() | currency:'MXN' }}
-    </div>
+    <p class="total">Total: {{ total() | currency:'MXN' }}</p>
     <div class="actions">
         <button class="btn" (click)="vaciar()">Vaciar Carrito</button>
-        <button class="btn purple" (click)="checkout()">Pagar</button>
+        <button class="btn verde" (click)="checkout()">Ir a pago</button>
     </div>
     }
-</section>
+</div>

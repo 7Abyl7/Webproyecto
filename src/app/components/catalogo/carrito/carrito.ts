@@ -1,18 +1,30 @@
-import { Component, computed, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, computed, ChangeDetectorRef, OnInit, AfterViewInit, ViewChild, inject, ElementRef } from '@angular/core';
 import { Product } from '../../../models/producto.model';
 import { CurrencyPipe } from '@angular/common';
 import { CarritoService } from '../../../services/carrito.service';
+import { PaypalService } from '../../../services/paypal.service';
 import { Router, RouterOutlet, RouterLinkWithHref } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { Signal } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+
+declare const paypal: any;
 
 @Component({
   selector: 'app-carrito',
   standalone: true,
-  imports: [CurrencyPipe, RouterOutlet, RouterLinkWithHref],
+  imports: [CurrencyPipe, RouterOutlet, RouterLinkWithHref, RouterLink],
   templateUrl: './carrito.html',
   styleUrl: './carrito.css',
 })
-export class CarritoComponent implements OnInit {
+
+export class CarritoComponent implements AfterViewInit, OnInit {
+  @ViewChild('paypalButtonContainer')
+  paypalButtonContainer!: ElementRef<HTMLDivElement>;
+
+  private paypalService = inject(PaypalService);
+  mostrarModal = false;
+  mensajeModal = '';
   carrito: Signal<Product[]>;
   total = computed(() => this.carritoService.total());
 
@@ -24,7 +36,13 @@ export class CarritoComponent implements OnInit {
     setTimeout(() => {
       this.cdr.detectChanges();
     }, 0);
-}
+  }
+
+  ngAfterViewInit(): void {
+      setTimeout(() => {
+        this.renderPaypalButton();
+      }, 0);
+  }
 
   quitar(id: number) {
     this.carritoService.quitar(id);
@@ -49,4 +67,70 @@ export class CarritoComponent implements OnInit {
   checkout() {
     this.router.navigate(['checkout']);
   }
+  
+    private renderPaypalButton(): void {
+      if (this.carrito().length === 0) {
+        return;
+      }
+      if (typeof paypal === 'undefined') {
+        this.ponerModal('No se cargó el SDK de PayPal.');
+        return;
+      }
+      if (!this.paypalButtonContainer) {
+        return;
+      }
+      this.paypalButtonContainer.nativeElement.innerHTML = '';
+  
+      paypal.Buttons({
+        createOrder: async () => {
+          try {
+            const response = await firstValueFrom(
+              this.paypalService.crearOrden({
+                items: this.carrito(),
+                total: this.total()
+              })
+            );
+            return response.id;
+          } catch (error) {
+            console.error('Error al crear la orden:', error);
+            this.ponerModal('No se pudo crear la orden.');
+            throw error;
+          }
+        },
+  
+        onApprove: async (data: any) => {
+          try {
+            const capture = await firstValueFrom(
+              this.paypalService.capturarOrden({orderId: data.orderID, items: this.carrito(), total: this.total()})
+            );
+            console.log('Pago capturado:', capture);
+            this.ponerModal('Pago realizado correctamente.');
+            this.carritoService.exportarXML();
+            this.carritoService.vaciar();
+            this.paypalButtonContainer.nativeElement.innerHTML = '';
+          } catch (error) {
+            console.error('Error al capturar el pago:', error);
+            this.ponerModal('Ocurrio un error al capturar el pago.');
+          }
+        },
+  
+        onCancel: () => {
+          this.ponerModal('El usuario cancelo el pago.');
+        },
+  
+        onError: (error: any) => {
+          console.error('Error PayPal:', error);
+          this.ponerModal('Error en el proceso de PayPal.');
+        }
+      }).render(this.paypalButtonContainer.nativeElement);
+    }
+  
+    ponerModal(mensaje: string) {
+      this.mensajeModal = mensaje;
+      this.mostrarModal = true;
+    }
+  
+    cerrarModal() {
+      this.mostrarModal = false;
+    }
 }

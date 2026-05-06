@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 .barra {
     position: sticky;
     top: 0;
@@ -10,10 +11,11 @@
     justify-content: space-between;
     padding: 0 18px;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Press Start 2P', curisve;
 }
 
 .titulo {
+    margin-left: 10px;
     font-weight: bold;
     font-size: 25px;
     color: black;
@@ -26,7 +28,8 @@
 }
 
 .btn {
-    font-size: 20px;
+    font-family: 'Press Start 2P', curisve;
+    font-size: 15px;
     border: none;
     background: none;
     cursor: pointer;

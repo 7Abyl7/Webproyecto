@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CurrencyPipe, NgClass } from '@angular/common';
 import { Product } from '../../../models/producto.model';
-import { CarritoService } from '../../../services/carrito.service';
 
 @Component({
   selector: 'app-product-card',

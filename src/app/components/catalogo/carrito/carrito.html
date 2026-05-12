@@ -18,13 +18,11 @@
             </li>
             }
         </ul>
-        <div class="actions">
-            <button class="btn" (click)="vaciar()">Vaciar Carrito</button>
-        </div>
-        }
+        <p class="subtotal">Subtotal: {{ subtotal() | currency: 'MXN' }}</p>
+        <button class="btn" (click)="vaciar()">Vaciar Carrito</button> }
     </div>
     <div class="derecha">
-        <p class="total">Total: {{ total() | currency:'MXN' }}</p>
+        <p class="total">Total(+IVA): {{ total() | currency:'MXN' }}</p>
         <div #paypalButtonContainer class="paypal"></div>
     </div>
     @if (mostrarModal) {

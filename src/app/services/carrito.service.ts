@@ -19,8 +19,12 @@ export class CarritoService {
         this.productosSignal.set([]);
     }
 
-    total(): number {
+    subtotal(): number {
         return this.productosSignal().reduce((acc, p) => acc + (Number(p.precio) || 0), 0);
+    }
+
+    total(): number {
+        return Number((this.subtotal() * 1.16).toFixed(2));
     }
 
     exportarXML() {
@@ -33,6 +37,7 @@ export class CarritoService {
             xml += ` <precio>${p.precio}</precio>\n`;
             xml += ` </producto>\n`;
         }
+        xml += ` <subtotal>${this.subtotal()}</total>\n`;
         xml += ` <total>${this.total()}</total>\n`;
         xml += ` </recibo>\n`;
         const blob = new Blob([xml], { type: 'application/xml'});

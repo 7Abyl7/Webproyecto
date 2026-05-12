@@ -16,6 +16,11 @@
     margin-bottom: 40px;
 }
 
+.subtotal {
+    font-weight: 550;
+    margin-top: 20px;
+}
+
 .total {
     font-weight: 700;
     font-size: 25px;
@@ -80,15 +85,6 @@
     display: flex;
     align-items: center;
     font-size: 18px;
-}
-
-.actions {
-    margin-top: 30px;
-    display: flex;
-    gap: 10px 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
 }
 
 .paypal {

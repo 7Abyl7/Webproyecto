@@ -1,5 +1,19 @@
 <div class="contenedor-inicio">
     <div class="banner-principal">
+        <select (change)="cambiarCategoria($event)">
+            <option value="">Todas</option>
+            <option value="bosque">Bosque</option>
+            <option value="cueva">Cueva</option>
+            <option value="hielo">Hielo</option>
+            <option value="cielo">Cielo</option>
+            <option value="castillo">Castillo</option>
+            <option value="montana">Montana</option>
+            <option value="volcan">Volcan</option>
+            <option value="ruinas">Ruinas</option>
+            <option value="cascada">Cascada</option>
+            <option value="fantasia">Fantasia</option>
+            <option value="mazmorra">Mazmorra</option>
+        </select>
         <h1 class="titulo-banner">Arte digital en Pixeles</h1>
         <div class="barra-busqueda">
             <input type="text" placeholder="Buscar" class="input-busqueda">

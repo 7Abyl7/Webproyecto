@@ -5,4 +5,5 @@ export interface Product {
     resolucion:string;
     autor:string;
     URLImg:string;
+    categoria:string
 }

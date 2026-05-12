@@ -18,7 +18,11 @@ export class CatalogoComponent implements OnInit {
   constructor(private productsService: ProductsService, private carritoService: CarritoService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.productsService.getaProductos().subscribe({
+    this.cargarProductos();
+  }
+
+  cargarProductos(categoria: string = ''): void {
+    this.productsService.getaProductos(categoria).subscribe({
       next: (data) => {
         this.products = data;
         console.log('Productos recibidos: ', data);
@@ -28,6 +32,11 @@ export class CatalogoComponent implements OnInit {
         console.error('Error al obtener productos: ', err);
       }
     });
+    this.cdr.detectChanges();
+  }
+
+  cambiarCategoria(event: any) {
+    this.cargarProductos(event.target.value);
   }
 
   estaEnCarrito(id: number): boolean {

@@ -26,6 +26,7 @@ export class CarritoComponent implements AfterViewInit, OnInit {
   mostrarModal = false;
   mensajeModal = '';
   carrito: Signal<Product[]>;
+  subtotal = computed(() => this.carritoService.subtotal());
   total = computed(() => this.carritoService.total());
 
   constructor(private carritoService: CarritoService, private cdr: ChangeDetectorRef, private router: Router) {
@@ -50,10 +51,6 @@ export class CarritoComponent implements AfterViewInit, OnInit {
 
   vaciar() {
     this.carritoService.vaciar();
-  }
-
-  exportarXML() {
-    this.carritoService.exportarXML();
   }
 
   estaEnCarrito(id: number) {

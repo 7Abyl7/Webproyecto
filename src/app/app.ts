@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { Router, RouterOutlet, RouterLinkWithHref } from '@angular/router';
+import { CarritoService } from './services/carrito.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { Router, RouterOutlet, RouterLinkWithHref } from '@angular/router';
 
 export class App {
   protected readonly title = signal('Webproyecto');
-  constructor(private router: Router) {}
+  constructor(private router: Router, public carritoService: CarritoService) {}
 
   regresar() {
     window.scrollTo({ top: 0, behavior: 'smooth'})

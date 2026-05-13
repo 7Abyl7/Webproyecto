@@ -69,6 +69,7 @@ export class CatalogoComponent implements OnInit {
     } else {
       this.categoriasSeleccionadas = this.categoriasSeleccionadas.filter(c => c !== categoria);
     }
+    this.busqueda = '';
     this.cargarProductos();
   }
 

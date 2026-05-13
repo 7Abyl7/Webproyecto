@@ -19,6 +19,10 @@ export class CarritoService {
         this.productosSignal.set([]);
     }
 
+    get cantidadTotal(): number {
+        return this.productosSignal().length;
+    }
+
     subtotal(): number {
         return this.productosSignal().reduce((acc, p) => acc + (Number(p.precio) || 0), 0);
     }

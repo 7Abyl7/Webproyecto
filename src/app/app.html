@@ -2,7 +2,8 @@
     <p class="titulo">ZetaArt</p>
     <div class="derecha">
         <button class="btn" (click)="regresar()">Inicio</button>
-        <button class="btn" (click)="navegar()"><img [src]="icono" alt="icono" class="icono-img"></button>
+        <button class="btn" (click)="navegar()"><img [src]="icono" alt="icono" class="icono-img"></button> @if (carritoService.cantidadTotal > 0 && icono == "/carrito.png") {
+        <span class="badge">{{ carritoService.cantidadTotal }}</span> }
     </div>
 </nav>
 <router-outlet></router-outlet>

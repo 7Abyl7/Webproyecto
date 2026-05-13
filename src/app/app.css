@@ -24,7 +24,7 @@
 .derecha {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 6px;
 }
 
 .btn {
@@ -42,16 +42,8 @@
     transform: scale(1.15);
 }
 
-.carrito {
-    border: none;
-    background: transparent;
-    font-size: 25px;
-    cursor: pointer;
-    display: flex;
-    padding: 8px;
-    transition: all 0.2s ease;
-}
-
-.carrito:hover {
-    transform: scale(1.15);
+.icono-img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
 }

@@ -10,7 +10,7 @@ export class PaypalService {
     private http = inject(HttpClient);
     private apiUrl = `${environment.apiUrl}/paypal`;
 
-    crearOrden (payload: { items: any[]; total: number}) {
+    crearOrden (payload: { items: any[]; subtotal: number}) {
         return this.http.post<{id: String; status: String}>(`${this.apiUrl}/createOrder`, payload);
     }
 

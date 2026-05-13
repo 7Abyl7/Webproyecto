@@ -23,16 +23,22 @@ async function getAccessToken() {
 async function createPaypalOrder(orderData) {
     console.log("orderData.items: ", orderData.items);
     const accessToken = await getAccessToken();
+    const iva = orderData.subtotal * 0.16;
+    const total = orderData.subtotal + iva;
     const body = {
         intent: 'CAPTURE',
         purchase_units: [{
             amount: {
                 currency_code: 'MXN',
-                value: Number(orderData.total).toFixed(2),
+                value: Number(total).toFixed(2),
                 breakdown: {
                     item_total: {
                         currency_code: 'MXN',
-                        value: Number(orderData.total).toFixed(2)
+                        value: Number(orderData.subtotal).toFixed(2)
+                    },
+                    tax_total: {
+                        currency_code: "MXN",
+                        value: (iva).toFixed(2)
                     }
                 }
             },

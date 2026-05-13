@@ -1,29 +1,31 @@
 <div class="contenedor-inicio">
     <div class="banner-principal">
-        <select (change)="cambiarCategoria($event)">
-            <option value="">Todas</option>
-            <option value="bosque">Bosque</option>
-            <option value="cueva">Cueva</option>
-            <option value="hielo">Hielo</option>
-            <option value="cielo">Cielo</option>
-            <option value="castillo">Castillo</option>
-            <option value="montana">Montana</option>
-            <option value="volcan">Volcan</option>
-            <option value="ruinas">Ruinas</option>
-            <option value="cascada">Cascada</option>
-            <option value="fantasia">Fantasia</option>
-            <option value="mazmorra">Mazmorra</option>
-        </select>
+        <button class="btn-menu" (click)="toggleMenuCategorias()">☰</button> @if(menuCategoriasAbierto){
+        <div class="menu-categorias">
+            <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('cueva')" (change)="toggleCategoria('cueva', $event)"> Cueva</label>
+            <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('hielo')" (change)="toggleCategoria('hielo', $event)"> Hielo</label>
+            <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('cielo')" (change)="toggleCategoria('cielo', $event)"> Cielo</label>
+            <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('castillo')" (change)="toggleCategoria('castillo', $event)"> Castillo</label>
+            <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('montana')" (change)="toggleCategoria('montana', $event)"> Monte</label>
+            <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('volcan')" (change)="toggleCategoria('volcan', $event)"> Volcan</label>
+            <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('ruinas')" (change)="toggleCategoria('ruinas', $event)"> Ruinas</label>
+            <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('cascada')" (change)="toggleCategoria('cascada', $event)"> Cascada</label>
+            <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('fantasia')" (change)="toggleCategoria('fantasia', $event)"> Fantasia</label>
+            <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('mazmorra')" (change)="toggleCategoria('mazmorra', $event)"> Mazmorra</label>
+        </div>
+        }
         <h1 class="titulo-banner">Arte digital en Pixeles</h1>
         <div class="barra-busqueda">
-            <input type="text" placeholder="Buscar" class="input-busqueda">
-            <button class="boton-busqueda">🔍</button>
+            <input type="text" placeholder="Buscar" class="input-busqueda" [(ngModel)]="busqueda" (keyup.enter)="buscarProducto()">
+            <button class="boton-busqueda" (click)="buscarProducto()">🔍</button>
         </div>
     </div>
-    <div class="contenedor-productos">
-        @if (products.length === 0) {
-        <p>Cargando productos (o revisa la base de datos).</p>
-        } @else { @for (p of products; track p.id) {
+    <div class="contenedor-productos" [attr.data-render]="renderKey">
+        @if (cargando){
+        <p>Cargando productos...</p>
+        } @else if (products.length === 0) {
+        <p>No se encontraron productos.</p>
+        } @else { @for (p of products; track $index) {
         <app-product-card [product]="p" [enCarrito]="estaEnCarrito(p.id)" (add)="modificarCarrito($event)"></app-product-card>
         } }
     </div>

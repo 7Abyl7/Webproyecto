@@ -37,7 +37,7 @@ export class CarritoService {
             xml += ` <precio>${p.precio}</precio>\n`;
             xml += ` </producto>\n`;
         }
-        xml += ` <subtotal>${this.subtotal()}</total>\n`;
+        xml += ` <subtotal>${this.subtotal()}</subtotal>\n`;
         xml += ` <total>${this.total()}</total>\n`;
         xml += ` </recibo>\n`;
         const blob = new Blob([xml], { type: 'application/xml'});

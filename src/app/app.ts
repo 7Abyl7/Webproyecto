@@ -21,6 +21,6 @@ export class App {
   }
 
   get icono() {
-    return this.router.url === '/' ? '🛒' : '🖼️';
+    return this.router.url === '/' ? '/carrito.png' : '/galeria.png';
   }
 }

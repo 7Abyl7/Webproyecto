@@ -4,6 +4,7 @@
 }
 
 .banner-principal {
+    position: relative;
     width: 100%;
     height: 400px;
     background: #ccc;
@@ -15,6 +16,46 @@
     background-image: url("/background.jpeg");
     background-size: cover;
     background-position: center;
+}
+
+.btn-menu {
+    position: absolute;
+    top: 10px;
+    left: 40px;
+    font-size: 40px;
+    background: rgba(255, 255, 255, 0.075);
+    border: none;
+    cursor: pointer;
+    color: black;
+    z-index: 10;
+}
+
+.menu-categorias {
+    position: absolute;
+    top: 70px;
+    left: 50px;
+    width: 160px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 6px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 10;
+}
+
+.menu-categorias label {
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.menu-categorias input {
+    cursor: pointer;
 }
 
 .titulo-banner {
@@ -29,10 +70,10 @@
     display: flex;
     width: 420px;
     max-width: 90%;
-    border: 1px solid gray;
+    border: 2px solid gray;
     border-radius: 6px;
     overflow: hidden;
-    background: white;
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .input-busqueda {
@@ -40,14 +81,15 @@
     border: none;
     padding: 10px;
     outline: none;
+    background: transparent;
 }
 
 .boton-busqueda {
     width: 45px;
     border: none;
     cursor: pointer;
-    background: white;
     font-size: 16px;
+    background: transparent;
 }
 
 .contenedor-productos {

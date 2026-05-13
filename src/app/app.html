@@ -2,7 +2,7 @@
     <p class="titulo">ZetaArt</p>
     <div class="derecha">
         <button class="btn" (click)="regresar()">Inicio</button>
-        <button class="carrito" (click)="navegar()">{{ icono }}</button>
+        <button class="btn" (click)="navegar()"><img [src]="icono" alt="icono" class="icono-img"></button>
     </div>
 </nav>
 <router-outlet></router-outlet>

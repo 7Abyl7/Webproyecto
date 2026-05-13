@@ -8,10 +8,10 @@ export class ProductsService {
     private apiUrl = 'http://localhost:3000/api/productos';
 
     constructor(private http: HttpClient) {}
-    getaProductos(categoria?: string):Observable<Product[]> {
+    getaProductos(categoria: string[] = []):Observable<Product[]> {
         let url = `${this.apiUrl}`;
-        if (categoria && categoria !== '') {
-         url += `?categoria=${categoria}`;
+        if (categoria.length > 0) {
+         url += `?categoria=${categoria.join(',')}`;
         }
         return this.http.get<Product[]>(url);
     }

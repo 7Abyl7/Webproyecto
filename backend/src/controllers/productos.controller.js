@@ -5,8 +5,9 @@ const getProductos = (req, res) => {
     let sql = 'SELECT * FROM productos';
     let parametros = [];
     if (categoria && categoria !== '') {
-        sql += " WHERE categoria = ?";
-        parametros.push(categoria);
+        const listaCategorias = categoria.split(',').map(c => c.trim());
+        sql += ` WHERE categoria IN (${listaCategorias.map(() => '?').join(',')})`;
+        parametros = listaCategorias;
     }
     db.query(sql, parametros, (error, resultados) => {
         if (error) {

@@ -84,7 +84,7 @@ export class CarritoComponent implements AfterViewInit, OnInit {
             const response = await firstValueFrom(
               this.paypalService.crearOrden({
                 items: this.carrito(),
-                total: this.total()
+                subtotal: this.subtotal()
               })
             );
             return response.id;
@@ -98,7 +98,7 @@ export class CarritoComponent implements AfterViewInit, OnInit {
         onApprove: async (data: any) => {
           try {
             const capture = await firstValueFrom(
-              this.paypalService.capturarOrden({orderId: data.orderID, items: this.carrito(), total: this.total()})
+              this.paypalService.capturarOrden({orderId: data.orderID, items: this.carrito(), subtotal: this.subtotal()})
             );
             console.log('Pago capturado:', capture);
             this.ponerModal('Pago realizado correctamente.');

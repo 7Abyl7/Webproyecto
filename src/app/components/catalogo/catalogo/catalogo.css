@@ -92,6 +92,10 @@
     background: transparent;
 }
 
+.vacio {
+    margin-bottom: 10vh;
+}
+
 .contenedor-productos {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

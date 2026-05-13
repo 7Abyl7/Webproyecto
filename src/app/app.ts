@@ -11,6 +11,8 @@ import { CarritoService } from './services/carrito.service';
 
 export class App {
   protected readonly title = signal('Webproyecto');
+  mostrarModal = signal<'terminos' | 'aviso' | null>(null);
+
   constructor(private router: Router, public carritoService: CarritoService) {}
 
   regresar() {
@@ -23,5 +25,13 @@ export class App {
 
   get icono() {
     return this.router.url === '/' ? '/carrito.png' : '/galeria.png';
+  }
+
+  abrirModal(tipo: 'terminos' | 'aviso') {
+    this.mostrarModal.set(tipo);
+  }
+
+  cerrarModal() {
+    this.mostrarModal.set(null);
   }
 }

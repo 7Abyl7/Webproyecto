@@ -22,9 +22,9 @@
     </div>
     <div class="contenedor-productos" [attr.data-render]="renderKey">
         @if (cargando){
-        <p>Cargando productos...</p>
+        <p class="vacio">Cargando productos...</p>
         } @else if (products.length === 0) {
-        <p>No se encontraron productos.</p>
+        <p class="vacio">No se encontraron productos.</p>
         } @else { @for (p of products; track $index) {
         <app-product-card [product]="p" [enCarrito]="estaEnCarrito(p.id)" (add)="modificarCarrito($event)"></app-product-card>
         } }

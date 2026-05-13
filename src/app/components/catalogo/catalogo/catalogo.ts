@@ -54,7 +54,6 @@ export class CatalogoComponent implements OnInit {
       return;
     }
     this.products = this.productosOriginales.filter(p => p.nombre.toLowerCase().includes(texto));
-    this.busqueda = '';
     this.renderKey++;
     this.cdr.detectChanges() 
   }

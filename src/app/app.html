@@ -7,3 +7,52 @@
     </div>
 </nav>
 <router-outlet></router-outlet>
+<footer class="pie">
+    <button (click)="abrirModal('terminos')">Terminos y Condiciones</button>
+    <button (click)="abrirModal('aviso')">Aviso de Privacidad</button>
+</footer>
+@if (mostrarModal()) {
+<div class="overlay" (click)="cerrarModal()">
+    <div class="modal" (click)="$event.stopPropagation()">
+        @if (mostrarModal() === 'terminos') {
+        <h2>Terminos y Condiciones</h2>
+        <p class="texto">El presente contrato describe los términos y condiciones aplicables al uso del contenido y los productos del sitio web Zetart del cual son titulares Jatniel Herrera Díaz, Karla Regina Macias Ortiz y Adrian Suarez Quezada. Para hacer uso del contenido
+            y los productos del sitio web el usuario deberá sujetarse a los presentes términos y condiciones.<br> I. OBJETO<br> El objeto es regular el acceso y utilización del contenido y productos a disposición del público en general en el dominio https://www.zetart.com.<br>            Los titulares se reservan el derecho de realizar cualquier tipo de modificación en el sitio web en cualquier momento y sin previo aviso, el usuario acepta dichas modificaciones.<br> El acceso al sitio web por parte del usuario es libre y gratuito,
+            la utilización del contenido y los productos implican la creación de una cuenta de usuario.<br> El sitio web está dirigido a usuarios residentes en México y cumple con la legislación establecida en dicho país, si el usuario reside en otro
+            país y decide acceder al sitio web lo hará bajo su responsabilidad.<br> La administración del sitio web puede ejercerse por terceros, es decir, personas distintas a los titulares, sin afectar esto los presentes Términos y Condiciones.<br>            II. USUARIO<br> La actividad del usuario en el sitio web al comprar un producto estará sujeta a los presentes términos y condiciones. El usuario se compromete a utilizar el contenido y los productos de forma lícita, sin faltar a la moral o
+            al orden público, absteniéndose de realizar cualquier acto que afecte los derechos de terceros o el funcionamiento del sitio web.<br> El usuario se compromete a proporcionar información verídica en los formularios del sitio web.<br> El acceso
+            al sitio web no supone una relación entre el usuario y los titulares del sitio web.<br> III. ACCESO Y NAVEGACIÓN EN EL SITIO WEB<br> Los titulares no garantizan la continuidad y disponibilidad del contenido y los productos en el sitio web,
+            realizaran acciones que fomenten el buen funcionamiento de dicho sitio web sin responsabilidad alguna.<br> Los titulares no se responsabilizan de que el software esté libre de errores que puedan causar un daño al software y/o hardware del
+            equipo del cual el usuario accede al sitio web. De igual forma, no se responsabilizan por los daños causados por el acceso y/o utilización del sitio web.<br> IV. POLÍTICA DE PRIVACIDAD Y PROTECCIÓN DE DATOS<br> Conforme a lo establecido en
+            la Ley Federal de Protección de Datos Personales en Posesión de Particulares, los titulares se comprometen a tomar las medidas necesarias que garanticen la seguridad del usuario, evitando que se haga uso indebido de los datos personales que
+            el usuario proporcione en el sitio web.<br> Los titulares corroborarán que los datos personales contenidos en las bases de datos sean correctos, verídicos y actuales, así como que se utilicen únicamente con el fin con el que fueron recabados.<br>            El uso de datos personales se limitará a lo previsto en el Aviso de Privacidad disponible en https://www.zetart.com/aviso-de-privacidad.<br> El sitio web implica la utilización de cookies que son pequeñas cantidades de información que se almacenan
+            en el navegador utilizado por el usuario como datos de ingreso, preferencias del usuario, fecha y hora en que se accede al sitio web, sitios visitados y dirección IP, esta información es anónima y sólo se utilizará para mejorar el sitio web.
+            Los cookies facilitan la navegación y la hacen más amigable, sin embargo, el usuario puede desactivarlos en cualquier momento desde su navegador en el entendido de que esto puede afectar algunas funciones del sitio web.<br> V. POLÍTICA DE
+            PROPIEDAD INTELECTUAL E INDUSTRIAL<br> Los titulares manifiestan tener los derechos de propiedad intelectual e industrial del sitio web incluyendo imágenes, logotipos, marcas, colores, estructuras, tipografías, diseños y demás elementos que
+            lo distinguen, protegidos por la legislación mexicana e internacional en materia de propiedad intelectual e industrial.<br> El usuario se compromete a respetar los derechos de propiedad industrial e intelectual del titular pudiendo visualizar
+            los elementos del sitio web, almacenarlos, copiarlos e imprimirlos exclusivamente para uso personal a excepción de los productos a la venta los cuales tendrán que ser comprados primero para poder ser usado por el usuario.<br> VI. MODIFICACIÓN
+            DE LOS TÉRMINOS Y CONDICIONES<br> Zetart se reserva el derecho de realizar cualquier tipo de modificación en los Términos y Condiciones en cualquier momento con un previo aviso a los usuarios de 15 días, de acuerdo con sus necesidades o cambios
+            en la legislación aplicable, el usuario acepta dichas modificaciones.<br> VII. LEGISLACIÓN Y JURISDICCIÓN APLICABLE<br> La relación entre el usuario y los titulares se regirá por las legislaciones aplicables en México.<br> Zetart no se responsabiliza
+            por la indebida utilización del contenido y los productos del sitio web y del incumplimiento de los presentes términos y condiciones.
+        </p>
+        } @if (mostrarModal() === 'aviso') {
+        <h2>Aviso de Privacidad</h2>
+        <p class="texto">De conformidad con lo establecido en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, Zetart pone a su disposición el siguiente aviso de privacidad. Zetart es responsable del uso y protección de sus datos personales,
+            en este sentido y atendiendo las obligaciones legales establecidas en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, a través de este instrumento se informa a los titulares de los datos, la información que
+            de ellos se recaba y los fines que se le darán a dicha información.
+            <br><br> Para llevar a cabo las finalidades descritas en el presente aviso de privacidad, utilizaremos los siguientes datos personales:
+            <br><br> Correo electrónico<br> Nombre completo<br> Información de facturación<br> Datos de navegación<br>
+            <br><br> Los datos personales que recabamos de usted serán utilizados para las siguientes finalidades, las cuales son necesarias para concretar nuestra relación con usted, así como para atender los servicios y/o pedidos que solicite:
+            <br><br> -Gestionar su registro como usuario en nuestra plataforma de arte digital.<br> -Procesar de manera segura sus compras.<br> -Generar y emitir los comprobantes fiscales y recibos de compra.<br> -Facilitar la entrega inmediata de las
+            obras adquiridas a través de enlaces de descarga personalizados.<br> -Brindar soporte técnico especializado en caso de incidencias con el servicio.<br>
+            <br><br><br> Para garantizar su tranquilidad, Zetart ha implementado medidas de seguridad técnicas y administrativas para evitar la pérdida o uso no autorizado de su información, asegurando que no se realizarán transferencias a terceros ajenos
+            a la operación bancaria o legal del sitio. Asimismo, le informamos que usted cuenta con el derecho constitucional de ejercer sus derechos ARCO, permitiéndole en cualquier momento acceder, rectificar, cancelar u oponerse al tratamiento de sus
+            datos mediante una solicitud enviada al correo zetart@gmail.com .
+            <br><br> Finalmente, este documento podrá sufrir modificaciones o actualizaciones derivadas de cambios legales o de nuestro modelo de negocio, las cuales serán notificadas oportunamente a través de nuestra plataforma web para mantener la transparencia
+            en el manejo de su identidad digital.
+        </p>
+        }
+        <button (click)="cerrarModal()">Cerrar</button>
+    </div>
+</div>
+}

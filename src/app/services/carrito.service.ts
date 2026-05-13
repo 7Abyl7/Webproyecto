@@ -24,7 +24,7 @@ export class CarritoService {
     }
 
     subtotal(): number {
-        return this.productosSignal().reduce((acc, p) => acc + (Number(p.precio) || 0), 0);
+        return Number(this.productosSignal().reduce((acc, p) => acc + (Number(p.precio) || 0), 0).toFixed(2));
     }
 
     total(): number {

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 .barra {
+    flex-shrink: 0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -62,4 +63,56 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.pie {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background: #111;
+    color: white;
+}
+
+.pie button {
+    background: none;
+    border: none;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.pie button:hover {
+    color: white;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 20px;
+    width: 500px;
+    max-height: 70vh;
+    border-radius: 10px;
+}
+
+.texto {
+    flex: 1;
+    min-height: 0;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+.modal button {
+    width: 100px;
 }

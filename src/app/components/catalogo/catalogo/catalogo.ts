@@ -2,14 +2,13 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../../../models/producto.model';
 import { ProductCardComponent } from '../product-card/product-card';
-import { CarritoComponent } from '../carrito/carrito';
 import { CarritoService } from '../../../services/carrito.service';
 import { ProductsService } from '../../../services/productos.service';
 
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [ProductCardComponent, CarritoComponent, FormsModule],
+  imports: [ProductCardComponent, FormsModule],
   templateUrl: './catalogo.html',
   styleUrl: './catalogo.css',
 })
@@ -20,7 +19,6 @@ export class CatalogoComponent implements OnInit {
   busqueda: string = '';
   categoriasSeleccionadas: string[] = [];
   renderKey = 0;
-  menuCategoriasAbierto = false;
   cargando = false;
 
   constructor(private productsService: ProductsService, private carritoService: CarritoService, private cdr: ChangeDetectorRef) {}
@@ -33,12 +31,14 @@ export class CatalogoComponent implements OnInit {
     this.cargando = true;
     this.productsService.getaProductos(this.categoriasSeleccionadas).subscribe({
       next: (data) => {
+        this.cargando = false;
         this.productosOriginales = [...data];
         this.products = [...data];
-        this.cargando = false;
-        this.renderKey++;
         console.log("Productos recibidos:", data);
-        this.cdr.detectChanges() 
+        this.renderKey++;
+        setTimeout(() => {
+          this.cdr.detectChanges();
+        });
       },
       error: (err) => {
         this.cargando = false;
@@ -56,10 +56,6 @@ export class CatalogoComponent implements OnInit {
     this.products = this.productosOriginales.filter(p => p.nombre.toLowerCase().includes(texto));
     this.renderKey++;
     this.cdr.detectChanges() 
-  }
-  
-  toggleMenuCategorias() {
-    this.menuCategoriasAbierto = !this.menuCategoriasAbierto;
   }
 
   toggleCategoria(categoria: string, event: any): void {

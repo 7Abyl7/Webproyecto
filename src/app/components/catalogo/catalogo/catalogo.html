@@ -1,6 +1,5 @@
 <div class="contenedor-inicio">
     <div class="banner-principal">
-        <button class="btn-menu" (click)="toggleMenuCategorias()">☰</button> @if(menuCategoriasAbierto){
         <div class="menu-categorias">
             <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('cueva')" (change)="toggleCategoria('cueva', $event)"> Cueva</label>
             <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('hielo')" (change)="toggleCategoria('hielo', $event)"> Hielo</label>
@@ -13,7 +12,6 @@
             <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('fantasia')" (change)="toggleCategoria('fantasia', $event)"> Fantasia</label>
             <label><input type="checkbox" [checked]="categoriasSeleccionadas.includes('mazmorra')" (change)="toggleCategoria('mazmorra', $event)"> Mazmorra</label>
         </div>
-        }
         <h1 class="titulo-banner">Arte digital en Pixeles</h1>
         <div class="barra-busqueda">
             <input type="text" placeholder="Buscar" class="input-busqueda" [(ngModel)]="busqueda" (keyup.enter)="buscarProducto()">

@@ -18,21 +18,9 @@
     background-position: center;
 }
 
-.btn-menu {
-    position: absolute;
-    top: 10px;
-    left: 40px;
-    font-size: 40px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: white;
-    z-index: 10;
-}
-
 .menu-categorias {
     position: absolute;
-    top: 70px;
+    top: 35px;
     left: 50px;
     width: 160px;
     padding: 15px;

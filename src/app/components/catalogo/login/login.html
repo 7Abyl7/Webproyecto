@@ -1,0 +1,29 @@
+<div class="contenedor-login">
+    <div class="fondo-login">
+        <div class="card-login">
+            <h1>Iniciar Sesión</h1>
+            <div class="grupo-input">
+                <label>Correo</label>
+                <input type="text" [(ngModel)]="correo">
+            </div>
+            <div class="grupo-input">
+                <label>Contraseña</label>
+                <input type="password" [(ngModel)]="password">
+            </div>
+            @if (error) {
+            <p class="error">{{ error }}</p>
+            }
+            <button class="btn-login" (click)="iniciarSesion()" [disabled]="cargando">
+                @if (cargando) {
+                    Cargando...
+                } @else {
+                    Ingresar
+                }
+            </button>
+            <p class="registro-link">
+                ¿No tienes cuenta?
+                <a routerLink="/registro">Registrarse</a>
+            </p>
+        </div>
+    </div>
+</div>

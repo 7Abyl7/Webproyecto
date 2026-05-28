@@ -2,6 +2,7 @@ import { Component, computed, ChangeDetectorRef, OnInit, AfterViewInit, ViewChil
 import { Product } from '../../../models/producto.model';
 import { CurrencyPipe } from '@angular/common';
 import { CarritoService } from '../../../services/carrito.service';
+import { UserService } from '../../../services/user.service';
 import { PaypalService } from '../../../services/paypal.service';
 import { Router, RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import { RouterLink } from '@angular/router';
@@ -29,7 +30,7 @@ export class CarritoComponent implements AfterViewInit, OnInit {
   subtotal = computed(() => this.carritoService.subtotal());
   total = computed(() => this.carritoService.total());
 
-  constructor(private carritoService: CarritoService, private cdr: ChangeDetectorRef, private router: Router) {
+  constructor(private carritoService: CarritoService, private cdr: ChangeDetectorRef, private router: Router, private userService: UserService) {
     this.carrito = this.carritoService.productos;
   }
 
@@ -66,6 +67,10 @@ export class CarritoComponent implements AfterViewInit, OnInit {
   }
   
     private renderPaypalButton(): void {
+      if (!this.userService.getUser()?.id) {
+        this.ponerModal('Debes iniciar sesión para pagar');
+        return;
+      }
       if (this.carrito().length === 0) {
         return;
       }
@@ -97,8 +102,8 @@ export class CarritoComponent implements AfterViewInit, OnInit {
   
         onApprove: async (data: any) => {
           try {
-            const capture = await firstValueFrom(
-              this.paypalService.capturarOrden({orderId: data.orderID, items: this.carrito(), subtotal: this.subtotal()})
+            const capture = firstValueFrom(
+              this.paypalService.capturarOrden({orderId: data.orderID, id_cliente: this.obtenerIdCliente(), items: this.carrito(), subtotal: this.subtotal()})
             );
             console.log('Pago capturado:', capture);
             this.ponerModal('Pago realizado correctamente.');
@@ -121,10 +126,18 @@ export class CarritoComponent implements AfterViewInit, OnInit {
         }
       }).render(this.paypalButtonContainer.nativeElement);
     }
+
+    private obtenerIdCliente(): number {
+      const user = this.userService.getUser();
+      return user?.id ?? null;
+    }
   
     ponerModal(mensaje: string) {
       this.mensajeModal = mensaje;
       this.mostrarModal = true;
+      setTimeout(() => {
+        this.cdr.detectChanges();
+      }, 0);
     }
   
     cerrarModal() {

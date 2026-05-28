@@ -1,0 +1,31 @@
+.contenedor-profile {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #c7e8c5;
+}
+
+.card-profile {
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    background: #ececec;
+    border: 5px solid black;
+    text-align: center;
+}
+
+.card-profile h1 {
+    margin-bottom: 20px;
+}
+
+.btn-cerrar {
+    margin-top: 30px;
+    width: 220px;
+    height: 55px;
+    border: none;
+    border-radius: 30px;
+    background: #f27979;
+    font-size: 20px;
+    cursor: pointer;
+}

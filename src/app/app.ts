@@ -20,12 +20,16 @@ export class App {
   }
 
   navegar() {
-    this.router.navigate([this.router.url === '/' ? 'carrito' : '/']);
+    this.router.navigate([this.router.url === '/catalogo' ? 'carrito' : '/catalogo']);
   }
 
   get icono() {
-    return this.router.url === '/' ? '/carrito.png' : '/galeria.png';
+    return this.router.url === '/catalogo' ? '/carrito.png' : '/galeria.png';
   }
+
+  get mostrarNavbar(): boolean {
+    return !['/login','/registro'].includes(this.router.url);
+}
 
   abrirModal(tipo: 'terminos' | 'aviso') {
     this.mostrarModal.set(tipo);
@@ -34,4 +38,5 @@ export class App {
   cerrarModal() {
     this.mostrarModal.set(null);
   }
+
 }

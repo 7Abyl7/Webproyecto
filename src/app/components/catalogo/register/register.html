@@ -1,0 +1,37 @@
+<div class="contenedor-registro">
+    <div class="fondo-registro">
+        <div class="card-registro">
+            <h1>Registro</h1>
+            <div class="grupo-input">
+                <label>Usuario</label>
+                <input type="text" [(ngModel)]="nombre">
+            </div>
+            <div class="grupo-input">
+                <label>Correo</label>
+                <input type="email" [(ngModel)]="correo">
+            </div>
+            <div class="grupo-input">
+                <label>Contraseña</label>
+                <input type="password" [(ngModel)]="password">
+            </div>
+            @if (error) {
+            <p class="error">{{ error }}</p>
+            } @if (mensaje) {
+            <p class="success">{{ mensaje }}</p>
+            }
+            <button class="btn-registro" (click)="registrarse()" [disabled]="cargando">
+                @if (cargando) {
+                    Registrando...
+                } @else {
+                    Crear cuenta
+                }
+            </button>
+            <p class="registro-link">
+                ¿Ya tienes cuenta?
+                <a routerLink="/login">
+                    Iniciar sesión
+                </a>
+            </p>
+        </div>
+    </div>
+</div>

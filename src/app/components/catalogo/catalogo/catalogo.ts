@@ -43,6 +43,9 @@ export class CatalogoComponent implements OnInit {
       error: (err) => {
         this.cargando = false;
         console.error("Error al obtener productos:", err);
+        setTimeout(() => {
+          this.cdr.detectChanges();
+        });
       }
     });
   }

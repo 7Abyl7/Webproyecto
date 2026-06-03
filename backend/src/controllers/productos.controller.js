@@ -38,7 +38,86 @@ const obtenerHistorial = async(req, res) => {
     res.json(pedidos);
 };
 
+const agregarProducto = async(req, res) => {
+    try {
+        const {
+            nombre,
+            precio,
+            resolucion,
+            autor,
+            URLImg,
+            categoria
+        } = req.body;
+        await db.query(
+            `INSERT INTO productos
+            (precio,nombre,resolucion,autor,URLImg,categoria)
+            VALUES (?,?,?,?,?,?)`, [
+                precio,
+                nombre,
+                resolucion,
+                autor,
+                URLImg,
+                categoria
+            ]
+        );
+        res.status(201).json({ mensaje: 'Producto agregado correctamente' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ mensaje: 'Error al agregar producto' });
+    }
+};
+
+const editarProducto = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const {
+            nombre,
+            precio,
+            resolucion,
+            autor,
+            URLImg,
+            categoria
+        } = req.body;
+        await db.query(
+            `UPDATE productos
+            SET nombre = ?,
+                precio = ?,
+                resolucion = ?,
+                autor = ?,
+                URLImg = ?,
+                categoria = ?
+            WHERE id = ?`, [
+                nombre,
+                precio,
+                resolucion,
+                autor,
+                URLImg,
+                categoria,
+                id
+            ]
+        );
+        res.json({ mensaje: 'Producto actualizado correctamente' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ mensaje: 'Error al actualizar producto' });
+    }
+};
+
+const eliminarProducto = async(req, res) => {
+    try {
+        const { id } = req.params;
+        await db.query('DELETE FROM productos WHERE id = ?', [id]);
+        res.json({ mensaje: 'Producto eliminado' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ mensaje: 'Error al eliminar producto' });
+    }
+};
+
 module.exports = {
     getProductos,
-    obtenerHistorial
+    obtenerHistorial,
+    agregarProducto,
+    editarProducto,
+    eliminarProducto
 }

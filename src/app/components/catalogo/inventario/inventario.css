@@ -1,6 +1,5 @@
-.inventario {
-    width: 95%;
-    margin: 30px auto;
+.contenedor {
+    padding: 30px;
 }
 
 .header {
@@ -10,35 +9,113 @@
     margin-bottom: 20px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.btn-agregar {
+    margin-top: 35px;
+    background-color: #7ee67e;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-thead {
-    background: #ececec;
+.tabla {
+    background-color: #d9d9d9;
+    border-radius: 10px;
+    padding: 20px;
 }
 
-th,
-td {
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
+.encabezado,
+.fila {
+    display: grid;
+    grid-template-columns: 225px 50px 200px 250px 100px 150px 175px;
+    align-items: center;
     text-align: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.encabezado {
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.fila {
+    margin-bottom: 20px;
 }
 
 .miniatura {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    border: 2px solid black;
 }
 
-.btn-agregar,
-.btn-editar,
-.btn-eliminar {
+.acciones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-borrar {
+    background: #ff6b6b;
+    border: none;
     padding: 8px 15px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
 .btn-editar {
-    margin-right: 10px;
+    background: #7ee67e;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-agregar,
+.btn-editar,
+.btn-borrar {
+    transition: transform 0.2s ease;
+}
+
+.btn-agregar:hover,
+.btn-editar:hover,
+.btn-borrar:hover {
+    transform: scale(1.10);
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.acciones-modal {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }

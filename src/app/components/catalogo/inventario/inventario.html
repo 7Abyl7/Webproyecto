@@ -1,33 +1,64 @@
-<div class="inventario">
+<div class="contenedor">
     <div class="header">
-        <h1>Inventario</h1>
-        <button class="btn-agregar" (click)="agregarProducto()">+ Agregar producto</button>
+        <h1>Gestión de inventario</h1>
+        <button class="btn-agregar" (click)="agregarObra()">+ Añadir Obra</button>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Imagen</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Categoría</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for(producto of productos; track producto.id) {
-            <tr>
-                <td>
-                    <img [src]="producto.URLImg" [alt]="producto.nombre" class="miniatura">
-                </td>
-                <td>{{ producto.nombre }}</td>
-                <td>{{ producto.precio | currency }}</td>
-                <td>{{ producto.categoria }}</td>
-                <td>
-                    <button class="btn-editar" (click)="editar(producto)">Editar</button>
-                    <button class="btn-eliminar" (click)="eliminar(producto)">Eliminar</button>
-                </td>
-            </tr>
-            }
-        </tbody>
-    </table>
+    <div class="tabla">
+        <div class="encabezado">
+            <span>Miniatura</span>
+            <span>Id</span>
+            <span>Nombre</span>
+            <span>Artista</span>
+            <span>Resolución</span>
+            <span>Precio</span>
+            <span>Acciones</span>
+        </div>
+        @for(producto of productos; track producto.id){
+        <div class="fila">
+            <img [src]="producto.URLImg" [alt]="producto.nombre" class="miniatura">
+            <span>{{ producto.id }}</span>
+            <span>{{ producto.nombre }}</span>
+            <span>{{ producto.autor }}</span>
+            <span>{{ producto.resolucion }}</span>
+            <span>{{ producto.precio | currency:'MXN' }}</span>
+            <div class="acciones">
+                <button class="btn-borrar" (click)="borrar(producto)">Borrar</button>
+                <button class="btn-editar" (click)="editar(producto)">Editar</button>
+            </div>
+        </div>
+        }
+    </div>
 </div>
+@if(mostrarEditar){
+<div class="overlay">
+    <div class="modal">
+        <h2>Editar obra</h2>
+        <input [(ngModel)]="productoEditar.nombre" placeholder="Nombre">
+        <input [(ngModel)]="productoEditar.autor" placeholder="Autor">
+        <input [(ngModel)]="productoEditar.resolucion" placeholder="Resolución">
+        <input type="number" [(ngModel)]="productoEditar.precio" placeholder="Precio">
+        <input [(ngModel)]="productoEditar.URLImg" placeholder="URL Imagen">
+        <input [(ngModel)]="productoEditar.categoria" placeholder="Categoría">
+        <div class="acciones-modal">
+            <button class="btn-borrar" (click)="cerrarModal()">Cancelar</button>
+            <button class="btn-editar" (click)="guardarCambios()">Guardar</button>
+        </div>
+    </div>
+</div>
+} @else if(mostrarAgregar) {
+<div class="overlay">
+    <div class="modal">
+        <h2>Añadir Obra</h2>
+        <input [(ngModel)]="nuevoProducto.nombre" placeholder="Nombre">
+        <input [(ngModel)]="nuevoProducto.autor" placeholder="Autor">
+        <input [(ngModel)]="nuevoProducto.resolucion" placeholder="Resolución">
+        <input [(ngModel)]="nuevoProducto.URLImg" placeholder="URL Imagen">
+        <input [(ngModel)]="nuevoProducto.categoria" placeholder="Categoría">
+        <input type="number" [(ngModel)]="nuevoProducto.precio" placeholder="Precio">
+        <div class="acciones-modal">
+            <button class="btn-borrar" (click)="mostrarAgregar = false">Cancelar</button>
+            <button class="btn-editar" (click)="guardarNuevoProducto()">Guardar</button>
+        </div>
+    </div>
+</div>
+}

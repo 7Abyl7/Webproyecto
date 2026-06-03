@@ -14,7 +14,7 @@
             <span>{{ compra.order_id }}</span>
             <span>{{ producto.nombre }}</span>
             <span>{{ compra.fecha }}</span>
-            <span>${{ producto.precio }}</span>
+            <span>{{ producto.precio | currency:'MXN'}}</span>
         </div>
         } }
     </div>

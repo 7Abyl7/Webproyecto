@@ -1,0 +1,92 @@
+.contenedor-recuperar {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #c7e8c5;
+}
+
+.fondo-recuperar {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("/background.jpeg");
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+}
+
+.card-recuperar {
+    width: 100%;
+    max-width: 500px;
+    background: #ececec;
+    border: 5px solid black;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-recuperar h1 {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 8px;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.grupo-input label {
+    font-size: 25px;
+}
+
+.grupo-input input {
+    height: 40px;
+    border: 2px solid #555;
+    padding: 10px;
+    font-size: 20px;
+    background: white;
+}
+
+.error {
+    text-align: center;
+    color: red;
+    font-size: 18px;
+    min-height: 3vh;
+    margin-top: -5px
+}
+
+.btn-recuperar {
+    margin-top: -25px;
+    align-self: center;
+    width: 220px;
+    height: 55px;
+    border: none;
+    border-radius: 30px;
+    background: #f27979;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-recuperar:hover {
+    transform: scale(1.05);
+}
+
+.recuperar-link {
+    text-align: center;
+    font-size: 18px;
+}
+
+.recuperar-link a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+}

@@ -7,6 +7,8 @@ import { InventarioComponent } from './components/catalogo/inventario/inventario
 import { LoginComponent } from './components/catalogo/login/login';
 import { PasswordComponent } from './components/catalogo/password/password';
 import { RegisterComponent } from './components/catalogo/register/register';
+import { RecuperarComponent } from './components/catalogo/recuperar/recuperar';
+import { RestablecerComponent } from './components/catalogo/restablecer/restablecer';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -14,6 +16,8 @@ export const routes: Routes = [
     { path: 'carrito', component: CarritoComponent },
     { path: 'login', component: LoginComponent},
     { path: 'registro', component: RegisterComponent},
+    { path: 'recuperar', component: RecuperarComponent},
+    { path: 'restablecer', component: RestablecerComponent},
     { path: 'password', component: PasswordComponent},
     { path: 'historial', canActivate: [authGuard], component: HistoryComponent},
     { path: 'inventario', component: InventarioComponent},

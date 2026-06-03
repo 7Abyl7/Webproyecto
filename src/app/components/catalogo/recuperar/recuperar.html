@@ -1,0 +1,20 @@
+<div class="contenedor-recuperar">
+    <div class="fondo-recuperar">
+        <div class="card-recuperar">
+            <h1>Recuperar contraseña</h1>
+            <p>Introduce tu correo y te enviaremos un enlace para restablecer tu contraseña</p>
+            <div class="grupo-input">
+                <label>Correo</label>
+                <input type="recuperar" [(ngModel)]="correo">
+            </div>
+            <p class="error">{{ error ? error : '' }}</p>
+            <button class="btn-recuperar" (click)="recuperarPassword()" [disabled]="cargando"> 
+                @if (cargando) {
+                    Cargando...
+                } @else {
+                    Cambiar
+                }</button>
+            <a class="recuperar-link" routerLink="/login">Regresar</a>
+        </div>
+    </div>
+</div>

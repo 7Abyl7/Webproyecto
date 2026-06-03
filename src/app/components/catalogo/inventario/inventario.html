@@ -52,7 +52,7 @@
         <input [(ngModel)]="nuevoProducto.nombre" placeholder="Nombre">
         <input [(ngModel)]="nuevoProducto.autor" placeholder="Autor">
         <input [(ngModel)]="nuevoProducto.resolucion" placeholder="Resolución">
-        <input [(ngModel)]="nuevoProducto.URLImg" placeholder="URL Imagen">
+        <input type="file" (change)="onFileSelected($event)">
         <input [(ngModel)]="nuevoProducto.categoria" placeholder="Categoría">
         <input type="number" [(ngModel)]="nuevoProducto.precio" placeholder="Precio">
         <div class="acciones-modal">

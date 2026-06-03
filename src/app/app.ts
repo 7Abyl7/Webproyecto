@@ -41,7 +41,7 @@ export class App {
   }
 
   get mostrarNavbar(): boolean {
-    return !['/login','/registro', '/password'].includes(this.router.url);
+    return !['/login','/registro', '/password', '/recuperar', '/restablecer'].includes(this.router.url);
   }
 
   get usuario() {

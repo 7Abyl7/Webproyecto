@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 @Injectable({ providedIn: 'root' })
 
 export class AuthService {
+    correo = '';
     private apiUrl = 'http://localhost:3000/api/auth';
     
     constructor(private http: HttpClient) {}
@@ -25,6 +26,10 @@ export class AuthService {
         return localStorage.getItem('token');
     }
 
+    getCorreo(): string | null {
+        return this.correo;
+    }
+
     logout(): void {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -36,5 +41,13 @@ export class AuthService {
 
     cambiarPassword(data: any): Observable<any> {
         return this.http.put(`${this.apiUrl}/cambiar-password`, data);
+    }
+
+    recuperarPassword(data: any): Observable<any> {
+        return this.http.post(`${this.apiUrl}/recuperar-password`, data);
+    }
+
+    restablecerPassword(data: any) {
+        return this.http.put(`${this.apiUrl}/restablecer-password`, data);
     }
 }

@@ -137,6 +137,11 @@ export class InventarioComponent implements OnInit {
           }
       });
 }
+selectedFile: File | null = null;
+
+onFileSelected(event: any) {
+  this.selectedFile = event.target.files[0];
+}
 
   cerrarModal(): void {
     this.mostrarEditar = false;

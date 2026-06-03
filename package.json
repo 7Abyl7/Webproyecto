@@ -36,6 +36,7 @@
         "@angular/ssr": "^21.1.4",
         "concurrently": "^9.2.1",
         "express": "^5.1.0",
+        "nodemailer": "^8.0.10",
         "rxjs": "~7.8.0",
         "tslib": "^2.3.0",
         "validator": "^13.15.35"

@@ -1,0 +1,20 @@
+<div class="contenedor-restablecer">
+    <div class="fondo-restablecer">
+        <div class="card-restablecer">
+            <h1>Restablecer contraseña</h1>
+            <div class="grupo-input">
+                <label>Codigo</label>
+                <input [(ngModel)]="codigo">
+                <label>Nueva contraseña</label>
+                <input type="password" [(ngModel)]="password">
+            </div>
+            <p class="error">{{ error ? error : '' }}</p>
+            <button class="btn-restablecer" (click)="restablecerPassword()" [disabled]="cargando"> 
+                @if (cargando) {
+                    Cargando...
+                } @else {
+                    Restablecer
+                }</button>
+        </div>
+    </div>
+</div>

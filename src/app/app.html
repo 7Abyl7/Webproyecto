@@ -5,6 +5,24 @@
         <button class="btn" (click)="regresar()">Inicio</button>
         <button class="btn" (click)="navegar()"><img [src]="icono" alt="icono" class="icono-img"></button> @if (carritoService.cantidadTotal > 0 && icono == "/carrito.png") {
         <span class="badge">{{ carritoService.cantidadTotal }}</span> }
+        <div class="perfil-container">
+            <button class="btn perfil-btn" (click)="togglePerfil()">
+                <img src="/perfil.png" alt="perfil" class="icono-img">
+            </button> @if (mostrarPerfil) {
+            <div class="perfil-menu">
+                <div class="perfil-header">
+                    <img src="/perfil.png" alt="Perfil" class="avatar">
+                    <p class="datos">{{ usuario?.nombre }}</p>
+                    <p class="datos">{{ usuario?.correo }}</p>
+                </div>
+                @if (esAdmin()) {
+                <button class="boton-perfil" (click)="inventario()">Inventario</button> } @else {
+                <button class="boton-perfil" (click)="historial()">Historial</button> }
+                <button class="boton-perfil" (click)="cambiarPassword()">Cambiar contraseña</button>
+                <button class="boton-perfil" (click)="logout()">Cerrar sesión</button>
+            </div>
+            }
+        </div>
     </div>
 </nav>
 }

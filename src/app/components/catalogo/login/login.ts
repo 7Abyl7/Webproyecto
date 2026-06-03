@@ -37,7 +37,6 @@ export class LoginComponent {
         console.log('LOGIN RESPONSE:', response);
         this.authService.saveToken(response.token);
         this.userService.saveUser(response.usuario);
-        this.cargando = false;
         this.router.navigate(['/catalogo']);
         this.cdr.detectChanges();
       },

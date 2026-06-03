@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegisterComponent } from './register';
 
-describe('ProductCard', () => {
+describe('Register', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
 

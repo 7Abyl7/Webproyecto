@@ -3,8 +3,9 @@ import { authGuard } from './core/auth.guard';
 import { CatalogoComponent } from './components/catalogo/catalogo/catalogo'
 import { CarritoComponent } from './components/catalogo/carrito/carrito'
 import { HistoryComponent } from './components/catalogo/history/history';
+import { InventarioComponent } from './components/catalogo/inventario/inventario';
 import { LoginComponent } from './components/catalogo/login/login';
-import { ProfileComponent } from './components/catalogo/profile/profile';
+import { PasswordComponent } from './components/catalogo/password/password';
 import { RegisterComponent } from './components/catalogo/register/register';
 
 export const routes: Routes = [
@@ -13,7 +14,8 @@ export const routes: Routes = [
     { path: 'carrito', component: CarritoComponent },
     { path: 'login', component: LoginComponent},
     { path: 'registro', component: RegisterComponent},
-    { path: 'perfil', component: ProfileComponent},
+    { path: 'password', component: PasswordComponent},
     { path: 'historial', canActivate: [authGuard], component: HistoryComponent},
+    { path: 'inventario', component: InventarioComponent},
     { path: '**', redirectTo: ''},
 ];

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HistoryComponent } from './history';
 
-describe('ProductCard', () => {
+describe('History', () => {
   let component: HistoryComponent;
   let fixture: ComponentFixture<HistoryComponent>;
 

@@ -16,6 +16,10 @@ export class ProductsService {
         return this.http.get<Product[]>(url);
     }
 
+    obtenerHistorial(idCliente: number) {
+      return this.http.get<any[]>(`http://localhost:3000/api/historial/${idCliente}`);
+   }
+
      private getText(parent:Element,tag:string):string{
         return parent.getElementsByTagName(tag)[0]?.textContent?.trim()??'';
      }

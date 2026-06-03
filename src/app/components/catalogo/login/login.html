@@ -10,9 +10,7 @@
                 <label>Contraseña</label>
                 <input type="password" [(ngModel)]="password">
             </div>
-            @if (error) {
-            <p class="error">{{ error }}</p>
-            }
+            <p class="error">{{ error ? error : '' }}</p>
             <button class="btn-login" (click)="iniciarSesion()" [disabled]="cargando">
                 @if (cargando) {
                     Cargando...
@@ -20,10 +18,16 @@
                     Ingresar
                 }
             </button>
-            <p class="registro-link">
-                ¿No tienes cuenta?
-                <a routerLink="/registro">Registrarse</a>
-            </p>
+            <div class="registro-link">
+                <p>
+                    ¿No tienes cuenta?
+                    <a routerLink="/registro">Registrarse</a>
+                </p>
+                <p>
+                    ¿Olvidaste tu contraseña?
+                    <a routerLink="/registro">Recuperar contraseña</a>
+                </p>
+            </div>
         </div>
     </div>
 </div>

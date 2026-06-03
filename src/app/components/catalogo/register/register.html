@@ -3,22 +3,18 @@
         <div class="card-registro">
             <h1>Registro</h1>
             <div class="grupo-input">
-                <label>Usuario</label>
-                <input type="text" [(ngModel)]="nombre">
+                <label>Correo</label>
+                <input type="text" [(ngModel)]="correo">
             </div>
             <div class="grupo-input">
-                <label>Correo</label>
-                <input type="email" [(ngModel)]="correo">
+                <label>Nombre</label>
+                <input type="email" [(ngModel)]="nombre">
             </div>
             <div class="grupo-input">
                 <label>Contraseña</label>
                 <input type="password" [(ngModel)]="password">
             </div>
-            @if (error) {
-            <p class="error">{{ error }}</p>
-            } @if (mensaje) {
-            <p class="success">{{ mensaje }}</p>
-            }
+            <p class="error">{{ error ? error : '' }}</p>
             <button class="btn-registro" (click)="registrarse()" [disabled]="cargando">
                 @if (cargando) {
                     Registrando...

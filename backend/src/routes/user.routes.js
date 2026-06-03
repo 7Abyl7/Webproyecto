@@ -1,8 +1,10 @@
-import { Router } from 'express';
-import { verifyToken } from '../middleware/auth.middleware';
-import { getProfile, getOrderHistory } from '../controllers/user.controller';
+const express = require('express');
+const router = express.Router();
+const { verifyToken } = require('../middleware/auth.middleware');
+//import { getProfile, getOrderHistory } from '../controllers/user.controller';
+const { verifyAdmin } = require('../middleware/admin.middleware');
+const { inventario } = requiere('../controllers/user.controller')
 
-const router = Router();
-router.get('/profile', verifyToken, getProfile);
-router.get('/history', verifyToken, getOrderHistory);
-export default router;
+router.post('/inventario', verifyToken, verifyAdmin, inventario)
+
+module.exports = router;

@@ -4,7 +4,7 @@ import { CurrencyPipe } from '@angular/common';
 import { CarritoService } from '../../../services/carrito.service';
 import { UserService } from '../../../services/user.service';
 import { PaypalService } from '../../../services/paypal.service';
-import { Router, RouterOutlet, RouterLinkWithHref } from '@angular/router';
+import { Router, RouterLinkWithHref } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { Signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
@@ -14,7 +14,7 @@ declare const paypal: any;
 @Component({
   selector: 'app-carrito',
   standalone: true,
-  imports: [CurrencyPipe, RouterOutlet, RouterLinkWithHref, RouterLink],
+  imports: [CurrencyPipe, RouterLinkWithHref, RouterLink],
   templateUrl: './carrito.html',
   styleUrl: './carrito.css',
 })
@@ -22,7 +22,6 @@ declare const paypal: any;
 export class CarritoComponent implements AfterViewInit, OnInit {
   @ViewChild('paypalButtonContainer')
   paypalButtonContainer!: ElementRef<HTMLDivElement>;
-
   private paypalService = inject(PaypalService);
   mostrarModal = false;
   mensajeModal = '';

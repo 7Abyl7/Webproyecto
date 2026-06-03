@@ -1,0 +1,21 @@
+<div class="contenedor">
+    <h1>Historial de compras</h1>
+    <div class="tabla">
+        <div class="encabezado">
+            <span>Miniatura</span>
+            <span>Id de pedido</span>
+            <span>Nombre</span>
+            <span>Fecha compra</span>
+            <span>Pago total</span>
+        </div>
+        @for(compra of historial; track compra.idPedido){
+        <div class="fila">
+            <img [src]="compra.imagen" alt="obra">
+            <span>{{ compra.idPedido }}</span>
+            <span>{{ compra.nombre }}</span>
+            <span>{{ compra.fechaCompra }}</span>
+            <span>${{ compra.total }}</span>
+        </div>
+        }
+    </div>
+</div>

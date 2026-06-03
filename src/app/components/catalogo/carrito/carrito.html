@@ -4,7 +4,7 @@
         @if (carrito().length === 0) {
         <div class="vacio">
             <p>Tu carrito está vacío.</p>
-            <a routerLink="/">Ir al catálogo</a>
+            <a routerLink="/catalogo">Ir al catálogo</a>
         </div> } @else {
         <ul class="list">
             @for (producto of carrito(); track producto.id) {

@@ -25,37 +25,46 @@
     max-width: 500px;
     background: #ececec;
     border: 5px solid black;
-    padding: 50px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 
 .card-registro h1 {
     text-align: center;
-    font-size: 42px;
-    margin-bottom: 10px;
+    font-size: 38px;
+    margin-bottom: 8px;
 }
 
 .grupo-input {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .grupo-input label {
-    font-size: 28px;
+    font-size: 25px;
 }
 
 .grupo-input input {
-    height: 50px;
+    height: 40px;
     border: 2px solid #555;
     padding: 10px;
     font-size: 20px;
     background: white;
 }
 
+.error {
+    text-align: center;
+    color: red;
+    font-size: 18px;
+    min-height: 3vh;
+    margin-top: -5px
+}
+
 .btn-registro {
+    margin-top: -25px;
     align-self: center;
     width: 220px;
     height: 55px;
@@ -69,12 +78,6 @@
 
 .btn-registro:hover {
     transform: scale(1.05);
-}
-
-.error {
-    text-align: center;
-    color: red;
-    font-size: 18px;
 }
 
 .registro-link {

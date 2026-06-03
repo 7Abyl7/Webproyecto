@@ -33,4 +33,8 @@ export class AuthService {
     isLoggedIn(): boolean {
         return !!this.getToken();
     }
+
+    cambiarPassword(data: any): Observable<any> {
+        return this.http.put(`${this.apiUrl}/cambiar-password`, data);
+    }
 }

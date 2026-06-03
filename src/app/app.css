@@ -51,8 +51,8 @@
 
 .badge {
     position: absolute;
-    top: 8px;
-    right: 16px;
+    top: 4px;
+    right: 66px;
     background: red;
     color: white;
     font-size: 8px;
@@ -114,4 +114,61 @@
 
 .modal button {
     width: 100px;
+}
+
+.derecha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.perfil-container {
+    position: relative;
+}
+
+.perfil-menu {
+    position: absolute;
+    top: 60px;
+    right: -10px;
+    width: 375px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+    padding: 15px;
+    z-index: 1000;
+}
+
+.perfil-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.perfil-menu button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.datos {
+    font-size: 20px;
+    margin-top: 24px;
+    font-weight: bold;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.boton-perfil {
+    margin-top: 30px;
+    background: none;
+    border: none;
+    font-size: 22px;
 }

@@ -1,0 +1,39 @@
+.contenedor {
+    padding: 30px;
+}
+
+h1 {
+    margin-bottom: 25px;
+    margin-left: 50px;
+}
+
+.tabla {
+    background: #d8d8d8;
+    border-radius: 10px;
+    padding: 35px;
+    margin: 0 50px;
+}
+
+.encabezado,
+.fila {
+    display: grid;
+    grid-template-columns: 225px 100px 200px 150px 150px;
+    align-items: center;
+    text-align: center;
+    gap: 100px;
+}
+
+.encabezado {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.fila {
+    margin-bottom: 15px;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}

@@ -48,20 +48,34 @@ export class App {
     return this.userService.getUser();
   }
 
+  get textoMenuPrincipal(): string { 
+    if (this.esAdmin()) {
+      return this.router.url === '/inventario' ? 'Catálogo' : 'Inventario';}
+    return this.router.url === '/historial' ? 'Catálogo' : 'Historial';
+  }
+
+  accionMenuPrincipal() {
+    if (this.esAdmin()) {
+      if (this.router.url === '/inventario') {
+        this.router.navigate(['/catalogo']);
+      } else {
+        this.router.navigate(['/inventario']);
+      }
+    } else {
+      if (this.router.url === '/historial') {
+        this.router.navigate(['/catalogo']);
+      } else {
+        this.router.navigate(['/historial']);
+      }
+  }
+}
+
   esAdmin(): boolean {
     return this.usuario?.id === 1;
   }
 
   togglePerfil() {
     this.mostrarPerfil = !this.mostrarPerfil;
-  }
-
-  historial() {
-    this.router.navigate(['/historial']);
-  }
-
-  inventario() {
-    this.router.navigate(['/inventario']);
   }
 
   cambiarPassword() {

@@ -22,15 +22,20 @@ const getProductos = async(req, res) => {
 };
 
 const obtenerHistorial = async(req, res) => {
-    try {
-        const { idCliente } = req.params;
-        const [pedidos] = await db.query(`SELECT order_id, total, fecha, productos_comprados FROM pedidos WHERE id_cliente = ? ORDER BY fecha DESC`, [idCliente]);
-        res.json(pedidos);
 
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ mensaje: 'Error al obtener historial' });
+    const [pedidos] = await db.query('SELECT * FROM pedidos WHERE id_cliente = ?', [req.params.idCliente]);
+    for (const pedido of pedidos) {
+        const nombres = pedido.productos_comprados.split(',').map(p => p.trim());
+        const productos = [];
+        for (const nombre of nombres) {
+            const [rows] = await db.query('SELECT * FROM productos WHERE nombre = ?', [nombre]);
+            if (rows.length > 0) {
+                productos.push(rows[0]);
+            }
+        }
+        pedido.productos = productos;
     }
+    res.json(pedidos);
 };
 
 module.exports = {

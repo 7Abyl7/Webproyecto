@@ -1,7 +1,8 @@
+import { Product } from './producto.model';
+
 export interface HistorialCompra {
-    idPedido: number;
-    nombre: string;
-    imagen: string;
-    fechaCompra: string;
+    order_id: string;
+    fecha: string;
     total: number;
+    productos: Product[];
 }

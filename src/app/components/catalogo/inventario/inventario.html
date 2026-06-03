@@ -1,0 +1,33 @@
+<div class="inventario">
+    <div class="header">
+        <h1>Inventario</h1>
+        <button class="btn-agregar" (click)="agregarProducto()">+ Agregar producto</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(producto of productos; track producto.id) {
+            <tr>
+                <td>
+                    <img [src]="producto.URLImg" [alt]="producto.nombre" class="miniatura">
+                </td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.precio | currency }}</td>
+                <td>{{ producto.categoria }}</td>
+                <td>
+                    <button class="btn-editar" (click)="editar(producto)">Editar</button>
+                    <button class="btn-eliminar" (click)="eliminar(producto)">Eliminar</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

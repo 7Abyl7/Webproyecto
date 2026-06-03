@@ -8,14 +8,14 @@
             <span>Fecha compra</span>
             <span>Pago total</span>
         </div>
-        @for(compra of historial; track compra.idPedido){
+        @for(compra of historial; track compra.order_id) { @for (producto of compra.productos; track producto.id) {
         <div class="fila">
-            <img [src]="compra.imagen" alt="obra">
-            <span>{{ compra.idPedido }}</span>
-            <span>{{ compra.nombre }}</span>
-            <span>{{ compra.fechaCompra }}</span>
-            <span>${{ compra.total }}</span>
+            <img [src]="producto.URLImg" alt="{{ producto.nombre }}">
+            <span>{{ compra.order_id }}</span>
+            <span>{{ producto.nombre }}</span>
+            <span>{{ compra.fecha }}</span>
+            <span>${{ producto.precio }}</span>
         </div>
-        }
+        } }
     </div>
 </div>

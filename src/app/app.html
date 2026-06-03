@@ -15,9 +15,7 @@
                     <p class="datos">{{ usuario?.nombre }}</p>
                     <p class="datos">{{ usuario?.correo }}</p>
                 </div>
-                @if (esAdmin()) {
-                <button class="boton-perfil" (click)="inventario()">Inventario</button> } @else {
-                <button class="boton-perfil" (click)="historial()">Historial</button> }
+                <button class="boton-perfil" (click)="accionMenuPrincipal()">{{ textoMenuPrincipal }}</button>
                 <button class="boton-perfil" (click)="cambiarPassword()">Cambiar contraseña</button>
                 <button class="boton-perfil" (click)="logout()">Cerrar sesión</button>
             </div>
